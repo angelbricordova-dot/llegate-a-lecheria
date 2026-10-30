@@ -14,7 +14,8 @@ const FORMS = {
 };
 
 function doGet(e) {
-  const formId = (e && e.parameter && FORMS[e.parameter.f]) ? e.parameter.f : 'alejandro';
+  // Sin ?f=..., abre el primer cuestionario de FORMS.
+  const formId = (e && e.parameter && FORMS[e.parameter.f]) ? e.parameter.f : Object.keys(FORMS)[0];
   const t = HtmlService.createTemplateFromFile('Formulario');
   t.formId = formId;
   return t.evaluate()
