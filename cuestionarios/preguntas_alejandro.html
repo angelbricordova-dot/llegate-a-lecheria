@@ -1,0 +1,81 @@
+<script>
+/* Preguntas del cuestionario de Alejandro para Naylu (Llégate a Lechería). */
+const OPT = (a) => a.map(t => (typeof t === "string" ? { v: t, t } : t));
+window.FORM = {
+  eyebrow: "Después de nuestra reunión",
+  titulo: "Naylu, armemos juntos el sistema de <em>Llégate</em>",
+  intro: "Ya tengo anotado todo lo que me contaste: los más de 30 inmuebles, el bot de Telegram \"Producción\", el Inventario maestro, los calendarios de Airbnb y el anfitrión que entra en diciembre. Aquí van las preguntas que me faltan para preparar la propuesta. Marca lo que aplique y escribe solo donde quieras.",
+  datos: ["9 secciones", "15 minutos aprox.", "Puedes dejarlo a medias y volver"],
+  nombre: "Naylu",
+  firma: "Preparado por Alejandro para Llégate a Lechería C.A.",
+  secciones: [
+  { id: "prioridades", title: "Prioridades y plazos", intro: "Para saber por dónde empezar y cómo armar las cuotas.", qs: [
+    { id: "top3", type: "text", label: "Si solo pudieras tener 3 cosas funcionando el primer mes, ¿cuáles serían?", ph: "Ej.: catálogo con disponibilidad, control de cobros, portal del propietario" },
+    { id: "fecha", type: "single", label: "¿Hay alguna fecha que nos apure?", opts: OPT(["Antes de diciembre (llega el anfitrión)", "Antes de la próxima temporada alta", "Sin apuro, que quede bien", "Otra fecha"]), other: "Otra fecha" },
+    { id: "moneda", type: "multi", label: "¿En qué moneda cobras y llevas tus cuentas?", opts: OPT(["Dólares", "Euros", "Bolívares"]) },
+    { id: "inversion", type: "line", label: "¿Qué rango de inversión inicial tienes en mente?", hint: "Una idea aproximada me ayuda a proponerte fases que encajen.", ph: "Ej.: entre 300 y 600 dólares" },
+    { id: "cuotas", type: "single", label: "¿En cuántas cuotas te vendría bien pagarlo?", opts: OPT(["Un solo pago", "2 cuotas", "3 cuotas", "4 o más"]) },
+  ]},
+  { id: "modulos", title: "¿Qué quieres que tenga el sistema?", intro: "Estas son las ideas que salieron en la reunión. Marca cada una según cuánto la necesitas.", modules: [
+    { id: "m_catalogo", t: "Catálogo web con disponibilidad", d: "Fotos, características y fechas libres leídas de los calendarios de Airbnb." },
+    { id: "m_whatsapp", t: "Botón \"habla con la asesora\" y formulario", d: "Lleva directo al WhatsApp; sirve para domingos y para los anuncios de Instagram." },
+    { id: "m_resenas", t: "Muro de reseñas", d: "Textos, capturas, notas de voz y videos de huéspedes, estilo burbujas de chat." },
+    { id: "m_reservas", t: "Panel de reservas y cobros", d: "Reemplaza el grupo de Telegram y el Excel del mes: reserva, abono, saldo al llegar, recordatorios." },
+    { id: "m_ajustes", t: "Ajustes manuales sin programador", d: "Cobro completo en la reserva, descuentos, familiares sin cobro, cambios de fecha." },
+    { id: "m_finanzas", t: "Finanzas de la empresa", d: "Ingresos, comisiones, cuentas por cobrar y gastos en un solo lugar." },
+    { id: "m_cartera", t: "Cartera de propiedades única", d: "Reemplaza Notion y el Inventario maestro; recordatorio semanal para que actualicen precios." },
+    { id: "m_portal", t: "Portal del propietario", d: "Aviso de llegadas, ingresos y noches del año, reporte automático sin que tú lo envíes." },
+    { id: "m_captacion", t: "Captación de propiedades", d: "Checklist de visita, propuesta enviada, estado del trato y texto de venta automático." },
+    { id: "m_cotizacion", t: "Cotizaciones en PDF con un botón", d: "La asesora rellena datos y sale la cotización con tu marca." },
+    { id: "m_anfitrion", t: "Panel del anfitrión posventa", d: "Llegadas de mañana, llaves, seguimiento, encuestas y material POP." },
+    { id: "m_fichas", t: "Fichas de ingreso para vigilancia", d: "Se generan pegando el mensaje o con foto de la cédula y la placa." },
+    { id: "m_notif", t: "Notificaciones al celular", d: "Cobros pendientes, llegadas, salidas y tareas de cada persona." },
+    { id: "m_excel", t: "Respaldo automático en Excel o Google Sheets", d: "Tu \"base madre\" sigue existiendo aunque no trabajes desde ahí." },
+    { id: "m_chatbot", t: "Chatbot para WhatsApp e Instagram", d: "Se cotiza aparte con mi socio; aquí solo dime si te interesa." },
+  ]},
+  { id: "propiedades", title: "Propiedades y catálogo", intro: "Lo que verán los turistas en la web.", qs: [
+    { id: "cat_cuantas", type: "single", label: "¿Qué propiedades quieres mostrar en la web?", opts: OPT(["Todas", "Solo algunas", "Empezar con pocas e ir sumando"]) },
+    { id: "cat_fotos", type: "single", label: "¿Tienes fotos buenas de las propiedades?", opts: OPT(["Sí, de todas", "De algunas", "Hay que hacer sesiones"]) },
+    { id: "cat_datos", type: "multi", label: "¿Qué datos debe mostrar la ficha de cada propiedad?", opts: OPT(["Habitaciones", "Baños", "Capacidad", "Vista al mar", "Piscina", "Planta eléctrica", "Tanque de agua", "Internet", "Aire acondicionado", "Estacionamiento", "Ascensor", "Acepta mascotas", "Ubicación en mapa", "Otro"]), other: "Otro" },
+    { id: "cat_precio", type: "single", label: "¿Cómo mostramos los precios?", hint: "Siempre con la nota \"precios sujetos a cambios, consulta\".", opts: OPT(["\"Desde\" un precio", "Precio por temporada (baja y alta)", "Solo \"consultar precio\""]) },
+    { id: "cat_cal", type: "single", label: "¿Cuántas propiedades tienen el calendario de Airbnb sincronizado?", opts: OPT(["Todas", "La mayoría", "Pocas"]) },
+    { id: "cat_noairbnb", type: "text", label: "¿Qué haces hoy con las propiedades que no están en Airbnb?", ph: "Ej.: el propietario me avisa por WhatsApp" },
+    { id: "cat_quien", type: "single", label: "¿Quién debería actualizar precios y características?", opts: OPT(["La asesora", "El propietario desde su portal", "Ambos"]) },
+  ]},
+  { id: "reservas", title: "Reservas y cobros", intro: "Para que el sistema entienda tus casos reales, no solo el caso ideal.", qs: [
+    { id: "res_split", type: "line", label: "¿Qué parte se paga al reservar y qué parte al llegar?", ph: "Ej.: una noche al reservar, el resto al entrar" },
+    { id: "res_comision", type: "single", label: "Tu comisión es…", opts: OPT(["Igual en todas las propiedades", "Se negocia con cada propiedad", "Depende de la temporada"]) },
+    { id: "res_casos", type: "multi", label: "¿Qué casos especiales pasan seguido?", opts: OPT(["Todo cobrado en la reserva", "Descuentos negociados", "Estadías largas", "Cambios de fecha", "Cancelaciones y reembolsos", "Familiares o amigos sin cobro", "Otro"]), other: "Otro" },
+    { id: "res_garantia", type: "single", label: "¿Se cobra depósito de garantía?", opts: OPT(["Sí, lo guarda el propietario", "Sí, lo guardamos nosotros", "Depende de la propiedad", "No"]) },
+    { id: "res_pagos", type: "multi", label: "¿Qué métodos de pago usas?", opts: OPT(["Pago móvil", "Transferencia nacional", "Zelle", "Binance / USDT", "Efectivo", "Otro"]), other: "Otro" },
+    { id: "res_datos", type: "text", label: "Hoy la asesora registra origen, estado, red social y número de personas. ¿Falta algún dato?", ph: "Ej.: motivo del viaje, si trae mascotas, cumpleaños" },
+  ]},
+  { id: "propietarios", title: "Propietarios y anfitriones", intro: "Lo que podría convertirse en un valor extra de tu servicio.", qs: [
+    { id: "prop_tec", type: "single", label: "¿Tus propietarios usarían una app para marcar fechas y ver sus ingresos?", opts: OPT(["La mayoría sí", "Algunos", "Prefieren seguir por WhatsApp"]) },
+    { id: "prop_ver", type: "multi", label: "¿Qué debe ver el propietario en su portal?", opts: OPT(["Fechas reservadas", "Datos del huésped", "Monto que le corresponde", "Tu comisión", "Reseñas de su propiedad", "Reporte mensual"]) },
+    { id: "prop_cobro", type: "single", label: "¿Cobrarías el portal aparte?", opts: OPT(["Incluido en mi servicio", "Una mensualidad aparte", "Aún no lo sé"]) },
+    { id: "prop_fichas", type: "single", label: "¿Los condominios piden ficha de ingreso para vigilancia?", opts: OPT(["Sí, casi todos", "Algunos", "No"]) },
+  ]},
+  { id: "equipo", title: "Equipo y avisos", intro: "Cada persona verá solo lo que le toca.", qs: [
+    { id: "eq_quien", type: "multi", label: "¿Quiénes usarán el sistema?", opts: OPT(["Yo", "La asesora de ventas", "La suplente", "El anfitrión de diciembre", "Propietarios y anfitriones externos", "Personal de limpieza"]) },
+    { id: "eq_oculto", type: "multi", label: "¿Qué no debería ver la asesora?", opts: OPT(["Finanzas de la empresa", "Mis comisiones", "Gastos", "Datos de los propietarios", "Puede verlo todo"]) },
+    { id: "eq_avisos", type: "multi", label: "¿Por dónde prefieres recibir los avisos?", opts: OPT(["WhatsApp", "Telegram", "Notificación en el celular", "Correo"]) },
+  ]},
+  { id: "resenas", title: "Reseñas", intro: "Esas reseñas buenas que hoy se pierden en las historias.", qs: [
+    { id: "rev_cuando", type: "multi", label: "¿Cuándo le pedimos la reseña al huésped?", opts: OPT(["Al salir", "Al día siguiente", "Con un QR en el apartamento", "La pide el anfitrión en persona"]) },
+    { id: "rev_aprobar", type: "single", label: "¿Las reseñas se publican directo o las apruebas tú?", opts: OPT(["Yo las apruebo antes", "Se publican directo"]) },
+    { id: "rev_guardadas", type: "single", label: "¿Tienes reseñas, audios o videos guardados para empezar?", opts: OPT(["Sí, bastantes", "Algunos", "Casi ninguno"]) },
+  ]},
+  { id: "herramientas", title: "Lo que ya tienes funcionando", intro: "Para no romper nada mientras hacemos el cambio.", qs: [
+    { id: "h_bot", type: "multi", label: "¿Qué debería hacer el chatbot?", opts: OPT(["Responder preguntas frecuentes", "Mostrar disponibilidad", "Cotizar", "Tomar datos y pasar a la asesora"]) },
+    { id: "h_n8n", type: "text", label: "¿Qué tiene hoy tu base en n8n y qué problema tiene tu número de WhatsApp?" },
+    { id: "h_telegram", type: "single", label: "Mientras tanto, el bot de Telegram \"Producción\"…", opts: OPT(["Lo mantenemos hasta que el sistema nuevo funcione", "Lo reemplazamos de una vez"]) },
+    { id: "h_respaldo", type: "single", label: "¿Cada cuánto debe actualizarse el Excel de respaldo?", opts: OPT(["En tiempo real", "Una vez al día", "Una vez a la semana"]) },
+    { id: "h_accesos", type: "text", label: "¿Quién hizo la web actual y el bot de Telegram? ¿Tienes acceso al dominio y al hosting?", ph: "Ej.: lo hizo un freelance, tengo el dominio pero no el hosting" },
+  ]},
+  { id: "cierre", title: "Para cerrar", intro: "Lo que no te pregunté y quieras contarme.", qs: [
+    { id: "extra", type: "text", label: "¿Algo más que quieras que tenga en cuenta?", ph: "Ideas, cosas que te molestan hoy, referencias de sistemas o páginas que te gusten…" },
+  ]},
+  ],
+};
+</script>

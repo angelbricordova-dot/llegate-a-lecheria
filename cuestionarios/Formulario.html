@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one calm reading column (form), sticky progress bar, sections as numbered stops along the coast */
+:root {
+  --bg: #f4f9f8;
+  --surface: #ffffff;
+  --ink: #0e2f3a;
+  --muted: #5a7480;
+  --line: #d6e6e4;
+  --teal: #0b5f78;
+  --teal-soft: #e3f1f2;
+  --sun: #f7bf55;
+  --sun-ink: #4a3300;
+  --mint: #5fb8a3;
+  --ok: #2f8f6b;
+  --warn: #b26a00;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a1d23; --surface: #102b34; --ink: #e6f2f1; --muted: #9bb6bc; --line: #1f4450;
+    --teal: #62c4d9; --teal-soft: #14363f; --sun: #f7bf55; --sun-ink: #2a1d00; --mint: #6cc7b1;
+    --ok: #5fd0a2; --warn: #f0b04d; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+[hidden] { display: none !important; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body);
+  font-size: 16px; line-height: 1.55;
+}
+.wrap {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2 { font-family: var(--font-display); font-weight: 700; text-wrap: balance; letter-spacing: -0.01em; margin: 0; }
+p { margin: 0; }
+
+.bar {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; align-items: center; gap: 12px; padding-block: 10px; }
+.bar-title { font-weight: 700; font-size: 14px; white-space: nowrap; }
+.progress { flex: 1; min-width: 60px; height: 6px; background: var(--teal-soft); border-radius: 99px; overflow: hidden; }
+.progress span { display: block; height: 100%; width: 0; background: var(--teal); border-radius: inherit; transition: width .3s ease; }
+.save { font-size: 13px; color: var(--muted); white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+.save::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.save[data-s="ok"]::before { background: var(--ok); }
+.save[data-s="saving"]::before { background: var(--sun); }
+.save[data-s="error"]::before { background: var(--warn); }
+
+.hero { padding-block: 40px 28px; display: grid; gap: 16px; }
+.mark { width: 64px; height: 64px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); }
+.hero h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.1; }
+.hero h1 em { font-style: normal; color: var(--teal); }
+.lead { color: var(--muted); max-width: 60ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--muted); }
+.facts span:first-child { color: var(--ink); font-weight: 600; }
+.notice { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px 14px; font-size: 14px; color: var(--muted); }
+.notice[data-kind="error"] { border-color: color-mix(in srgb, var(--warn) 45%, var(--line)); }
+.notice b { color: var(--ink); }
+
+form { display: grid; gap: 22px; padding-bottom: 40px; }
+.section { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 20px 24px; display: grid; gap: 22px; scroll-margin-top: 70px; }
+.sec-head { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: baseline; }
+.sec-num {
+  grid-row: span 2; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--sun); color: var(--sun-ink); font-weight: 700; font-size: 15px;
+  display: grid; place-items: center; align-self: start; font-variant-numeric: tabular-nums;
+}
+.sec-head h2 { font-size: 23px; line-height: 1.2; }
+.sec-head p { color: var(--muted); font-size: 14.5px; grid-column: 2; }
+
+.q { display: grid; gap: 10px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.q legend, .q > label.qlabel { font-weight: 600; padding: 0; font-size: 15.5px; }
+.q .hint { color: var(--muted); font-size: 13.5px; margin-top: -4px; }
+.q[data-answered="true"] legend::after, .q[data-answered="true"] > label.qlabel::after { content: " ✓"; color: var(--ok); font-weight: 700; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-block; padding: 8px 14px; border-radius: 99px; border: 1px solid var(--line);
+  background: var(--bg); font-size: 14.5px; cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+}
+.chip input:checked + span { background: var(--teal); border-color: var(--teal); color: var(--surface); }
+.chip input:focus-visible + span { outline: 2px solid var(--sun); outline-offset: 2px; }
+.chip:hover span { border-color: var(--teal); }
+
+textarea, input[type="text"] {
+  width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; resize: vertical;
+}
+textarea { min-height: 84px; }
+textarea:focus, input[type="text"]:focus { outline: 2px solid var(--teal); outline-offset: 0; border-color: transparent; }
+
+.mods { display: grid; border-top: 1px solid var(--line); }
+.mod { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.mod-text { min-width: 0; }
+.mod-text b { display: block; font-weight: 600; font-size: 15px; }
+.mod-text small { color: var(--muted); font-size: 13.5px; display: block; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span { display: block; padding: 7px 10px; font-size: 13px; cursor: pointer; white-space: nowrap; border-left: 1px solid var(--line); }
+.seg label:first-child span { border-left: 0; }
+.seg input:checked + span[data-v="must"] { background: var(--teal); color: var(--surface); }
+.seg input:checked + span[data-v="maybe"] { background: var(--sun); color: var(--sun-ink); }
+.seg input:checked + span[data-v="no"] { background: var(--line); color: var(--ink); }
+.seg input:focus-visible + span { outline: 2px solid var(--sun); outline-offset: -2px; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+button {
+  font: inherit; font-weight: 600; font-size: 15px; border-radius: 12px; padding: 12px 18px; cursor: pointer;
+  border: 1px solid var(--teal); background: var(--teal); color: var(--surface);
+}
+button:focus-visible { outline: 2px solid var(--sun); outline-offset: 2px; }
+button:disabled { opacity: .55; cursor: default; }
+.sent { color: var(--ok); font-weight: 600; }
+.err { color: var(--warn); font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; padding-block: 0 40px; }
+
+@media (max-width: 560px) {
+  .bar-title { display: none; }
+  .mod { grid-template-columns: 1fr; }
+  .section { padding: 18px 14px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="bar-title">Llégate a Lechería</span>
+    <div class="progress" aria-hidden="true"><span id="prog"></span></div>
+    <span class="save" id="save" data-s="idle">Sin cambios</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="hero">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="31" fill="var(--teal-soft)"/>
+      <circle cx="32" cy="34" r="11" fill="var(--sun)"/>
+      <g stroke="var(--sun)" stroke-width="3" stroke-linecap="round">
+        <line x1="32" y1="12" x2="32" y2="17"/><line x1="17" y1="19" x2="20.5" y2="22.5"/><line x1="47" y1="19" x2="43.5" y2="22.5"/>
+        <line x1="11" y1="33" x2="16" y2="33"/><line x1="53" y1="33" x2="48" y2="33"/>
+      </g>
+      <path d="M6 40 Q16 35 26 40 T46 40 T62 40 V48 Q32 66 2 48 Z" fill="var(--mint)"/>
+      <path d="M8 46 Q18 42 28 46 T48 46 T60 46" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <span class="eyebrow" id="eyebrow"></span>
+    <h1 id="titulo"></h1>
+    <p class="lead" id="intro"></p>
+    <div class="facts" id="facts"></div>
+    <div class="notice" id="notice">Tus respuestas se guardan solas mientras escribes. Puedes cerrar y volver a este mismo enlace desde el mismo teléfono o computadora.</div>
+  </header>
+
+  <form id="form" novalidate></form>
+
+  <footer id="firma"></footer>
+</main>
+
+<?!= include('preguntas_' + formId) ?>
+
+<script>
+const FORM_ID = <?!= JSON.stringify(formId) ?>;
+const PRIO = [{ v: "must", t: "Imprescindible" }, { v: "maybe", t: "Me interesa" }, { v: "no", t: "No por ahora" }];
+const SECTIONS = FORM.secciones;
+const LS_KEY = "llegate-cuestionario-" + FORM_ID;
+
+const form = document.getElementById("form");
+const saveEl = document.getElementById("save");
+const noticeEl = document.getElementById("notice");
+const progEl = document.getElementById("prog");
+
+document.getElementById("eyebrow").textContent = FORM.eyebrow;
+document.getElementById("titulo").innerHTML = FORM.titulo;
+document.getElementById("intro").textContent = FORM.intro;
+document.getElementById("firma").textContent = FORM.firma;
+FORM.datos.forEach(t => { const s = document.createElement("span"); s.textContent = t; document.getElementById("facts").append(s); });
+
+let answers = {}, status = "borrador", sentAt = null, respondentId = null;
+let saveTimer = null, saving = false;
+
+try {
+  const s = JSON.parse(localStorage.getItem(LS_KEY) || "null");
+  if (s) { answers = s.answers || {}; status = s.status || status; sentAt = s.sentAt || null; respondentId = s.id || null; }
+} catch (e) {}
+if (!respondentId) respondentId = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+  }
+  kids.flat().forEach(k => k != null && n.append(k));
+  return n;
+}
+
+function renderQuestion(q) {
+  const val = answers[q.id];
+  if (q.type === "text" || q.type === "line") {
+    const wrap = el("div", { class: "q", "data-q": q.id });
+    const input = q.type === "text"
+      ? el("textarea", { id: q.id, name: q.id, placeholder: q.ph || "" })
+      : el("input", { type: "text", id: q.id, name: q.id, placeholder: q.ph || "" });
+    input.value = typeof val === "string" ? val : "";
+    input.addEventListener("input", () => setAnswer(q.id, input.value));
+    wrap.append(el("label", { class: "qlabel", for: q.id, text: q.label }));
+    if (q.hint) wrap.append(el("p", { class: "hint", text: q.hint }));
+    wrap.append(input);
+    return wrap;
+  }
+  const fs = el("fieldset", { class: "q", "data-q": q.id });
+  fs.append(el("legend", { text: q.label }));
+  if (q.hint) fs.append(el("p", { class: "hint", text: q.hint }));
+  const chips = el("div", { class: "chips" });
+  const isMulti = q.type === "multi";
+  const current = isMulti ? (val && Array.isArray(val.sel) ? val.sel : []) : (val && val.sel) || "";
+  q.opts.forEach((o, i) => {
+    const id = `${q.id}_${i}`;
+    const input = el("input", { type: isMulti ? "checkbox" : "radio", id, name: q.id, value: o.v });
+    input.checked = isMulti ? current.includes(o.v) : current === o.v;
+    input.addEventListener("change", () => onChoice(q, fs));
+    chips.append(el("label", { class: "chip", for: id }, input, el("span", { text: o.t })));
+  });
+  fs.append(chips);
+  if (q.other) {
+    const other = el("input", { type: "text", id: q.id + "_otro", class: "other", placeholder: "¿Cuál?" });
+    other.value = (val && val.otro) || "";
+    other.hidden = !(isMulti ? current.includes(q.other) : current === q.other);
+    other.addEventListener("input", () => onChoice(q, fs));
+    fs.append(other);
+  }
+  return fs;
+}
+
+function onChoice(q, fs) {
+  const isMulti = q.type === "multi";
+  const checked = [...fs.querySelectorAll("input[type=checkbox],input[type=radio]")].filter(i => i.checked).map(i => i.value);
+  const out = { sel: isMulti ? checked : (checked[0] || "") };
+  if (q.other) {
+    const other = fs.querySelector(".other");
+    const on = checked.includes(q.other);
+    other.hidden = !on;
+    if (on && other.value.trim()) out.otro = other.value;
+  }
+  setAnswer(q.id, out);
+}
+
+function renderModules(sec) {
+  const wrap = el("div", { class: "q" });
+  wrap.append(el("div", { class: "legend-row" },
+    el("span", { text: "Imprescindible: lo necesito ya" }),
+    el("span", { text: "Me interesa: en una segunda fase" }),
+    el("span", { text: "No por ahora" })));
+  const list = el("div", { class: "mods" });
+  sec.modules.forEach(m => {
+    const seg = el("div", { class: "seg", role: "radiogroup", "aria-label": m.t });
+    PRIO.forEach(p => {
+      const id = `${m.id}_${p.v}`;
+      const input = el("input", { type: "radio", name: m.id, id, value: p.v });
+      input.checked = answers[m.id] === p.v;
+      input.addEventListener("change", () => setAnswer(m.id, p.v));
+      seg.append(el("label", { for: id }, input, el("span", { "data-v": p.v, text: p.t })));
+    });
+    list.append(el("div", { class: "mod", "data-q": m.id },
+      el("div", { class: "mod-text" }, el("b", { text: m.t }), el("small", { text: m.d })), seg));
+  });
+  wrap.append(list);
+  return wrap;
+}
+
+function render() {
+  form.textContent = "";
+  SECTIONS.forEach((sec, i) => {
+    const s = el("section", { class: "section", id: sec.id });
+    s.append(el("div", { class: "sec-head" },
+      el("span", { class: "sec-num", text: String(i + 1) }),
+      el("h2", { text: sec.title }),
+      el("p", { text: sec.intro })));
+    if (sec.modules) s.append(renderModules(sec));
+    (sec.qs || []).forEach(q => s.append(renderQuestion(q)));
+    form.append(s);
+  });
+  form.append(renderFinish());
+  markAnswered();
+}
+
+function renderFinish() {
+  const s = el("section", { class: "section", id: "enviar" });
+  s.append(el("div", { class: "sec-head" },
+    el("span", { class: "sec-num", text: "✓" }),
+    el("h2", { text: "Listo" }),
+    el("p", { text: "Tus respuestas se van guardando solas. Cuando termines, toca Enviar y te escribo para la propuesta." })));
+  const sendBtn = el("button", { type: "button", id: "sendBtn", text: status === "enviado" ? "Actualizar respuestas" : "Enviar respuestas" });
+  const msg = el("p", { id: "sendMsg", class: status === "enviado" ? "sent" : "", text: status === "enviado" ? sentLabel() : "" });
+  sendBtn.addEventListener("click", () => {
+    status = "enviado"; sentAt = new Date().toISOString();
+    persistLocal();
+    sendBtn.disabled = true; sendBtn.textContent = "Enviando…";
+    send().then(() => {
+      msg.textContent = sentLabel(); msg.className = "sent";
+      sendBtn.textContent = "Actualizar respuestas";
+    }, () => {
+      msg.textContent = "No se pudo enviar. Revisa tu conexión e inténtalo de nuevo; tus respuestas siguen guardadas aquí.";
+      msg.className = "err"; sendBtn.textContent = "Enviar respuestas";
+    }).then(() => { sendBtn.disabled = false; });
+  });
+  s.append(el("div", { class: "actions" }, sendBtn), msg);
+  return s;
+}
+
+function sentLabel() {
+  const d = sentAt ? new Date(sentAt) : new Date();
+  return "Enviado el " + d.toLocaleDateString("es-VE", { day: "numeric", month: "long" }) + " a las " +
+    d.toLocaleTimeString("es-VE", { hour: "2-digit", minute: "2-digit" }) + " · ¡Gracias, " + FORM.nombre + "!";
+}
+
+function hasValue(v) {
+  if (v == null) return false;
+  if (typeof v === "string") return v.trim() !== "";
+  if (typeof v === "object") return Array.isArray(v.sel) ? v.sel.length > 0 : !!v.sel;
+  return true;
+}
+
+function allIds() {
+  const ids = [];
+  SECTIONS.forEach(s => { (s.modules || []).forEach(m => ids.push(m.id)); (s.qs || []).forEach(q => ids.push(q.id)); });
+  return ids;
+}
+
+function markAnswered() {
+  let n = 0; const ids = allIds();
+  ids.forEach(id => {
+    const ok = hasValue(answers[id]);
+    if (ok) n++;
+    const node = form.querySelector(`[data-q="${id}"]`);
+    if (node) node.dataset.answered = ok;
+  });
+  progEl.style.width = Math.round((n / ids.length) * 100) + "%";
+}
+
+// Una columna por pregunta en el Google Sheet, en el orden del cuestionario.
+function columnas() {
+  const out = [];
+  const prio = (v) => (PRIO.find(p => p.v === v) || {}).t || "";
+  SECTIONS.forEach(s => {
+    (s.modules || []).forEach(m => out.push(["Módulo: " + m.t, prio(answers[m.id])]));
+    (s.qs || []).forEach(q => {
+      const v = answers[q.id];
+      let txt = "";
+      if (typeof v === "string") txt = v.trim();
+      else if (v && typeof v === "object") {
+        txt = Array.isArray(v.sel) ? v.sel.join(", ") : (v.sel || "");
+        if (v.otro) txt += " (" + v.otro + ")";
+      }
+      out.push([q.label, txt]);
+    });
+  });
+  return out;
+}
+
+function setAnswer(id, v) {
+  answers[id] = v;
+  markAnswered(); persistLocal(); scheduleSave();
+}
+
+function persistLocal() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify({ id: respondentId, answers, status, sentAt })); } catch (e) {}
+}
+
+function setSave(s, t) { saveEl.dataset.s = s; saveEl.textContent = t; }
+
+function scheduleSave() {
+  setSave("saving", "Guardando…");
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => send().catch(() => {}), 2500);
+}
+
+function send() {
+  clearTimeout(saveTimer);
+  if (saving) return new Promise((res, rej) => setTimeout(() => send().then(res, rej), 800));
+  saving = true;
+  setSave("saving", "Guardando…");
+  return new Promise((resolve, reject) => {
+    if (!window.google || !google.script || !google.script.run) {
+      saving = false; setSave("error", "Sin conexión"); reject(new Error("sin servidor")); return;
+    }
+    google.script.run
+      .withSuccessHandler(() => {
+        saving = false; setSave("ok", "Guardado");
+        noticeEl.removeAttribute("data-kind");
+        resolve();
+      })
+      .withFailureHandler((err) => {
+        saving = false; setSave("error", "No se pudo guardar");
+        noticeEl.dataset.kind = "error";
+        noticeEl.innerHTML = "<b>No se pudo guardar en este momento.</b> Tus respuestas siguen en este navegador; se volverán a enviar en cuanto cambies algo o toques Enviar.";
+        reject(err);
+      })
+      .guardar({ formId: FORM_ID, id: respondentId, estado: status, columnas: columnas() });
+  });
+}
+
+render();
+persistLocal();
+</script>
+</body>
+</html>
