@@ -1,0 +1,606 @@
+# Reunión con Naylu Vergara (Llégate a Lechería) — transcripción automática (ElevenLabs), 43 min
+
+
+[00:09] Naylu: Hola.
+
+[00:10] Alejandro: Hola, ¿qué tal?
+
+[00:11] Naylu: Alejandro, ¿cómo estás?
+
+[00:12] Alejandro: Todo bien, Hailú. Disculpa que ahorita no tenga la cámara, pero el celular es el que tengo como cámara y lo tengo descargado ahorita. Pero si-
+
+[00:18] Naylu: Tranquilo, tranquilo.
+
+[00:18] Alejandro: En todo caso hacemos otra próxima reunión, ya ahí sí me la pongo.
+
+[00:22] Naylu: Ajá. Tranquilo, tranquilo.
+
+[00:25] Alejandro: Vale.
+
+[00:25] Naylu: Este, bueno, nada. Eh, me estuviste mostrando aquella vez esa... ¿es como una landing page, por decirlo así?
+
+[00:37] Alejandro: Sí, bueno, nosotros por lo menos a la dueña le entregamos una landing page, que es todo eso, que es precisamente para que las personas, eso es lo primero que van a ver apenas se metan en la, en la página, en, en Instagram. Eso te lo entregamos también con una, un video promocionando la página. Y después está lo que es ya la parte administrativa de la dueña, que eso ya es ver cuánto hayas cobrado en el mes, cuántos sí se han hospedado, cuántos no, que la gente ponga... que puedas aprobar o desaprobar o no publicar las reseñas de las personas, em, etcétera, etcétera. Entonces, eso ya es algo un poco más administrativo por parte de la dueña del condominio. En este caso, si tú eres quien maneja lo de Llégate a Lechería por completo, pues ahí tendrías el acceso a todas las, las, los apartamentos, el estado de los apartamentos. O sea, al final te podemos agregar muchas cosas. Todo depende, siempre como, cuánto, cómo lo quieras y lo voy anotando aquí, vamos haciendo un poco, eh, un proyecto en base a eso. Yo ya me metí a la página.
+
+[01:36] Naylu: Okey.
+
+[01:37] Alejandro: De Llégate a Lechería, la que mostraste. Ese dominio es tuyo, ese ya tú compraste ese dominio, ¿no?
+
+[01:42] Naylu: Sí.
+
+[01:43] Alejandro: Vale, perfecto.
+
+[01:43] Naylu: Correcto.
+
+[01:44] Alejandro: Ah, mucho mejor, porque si no, se ve tan casual.
+
+[01:48] Naylu: Exacto, exacto. Yo te voy a explicar más o menos cómo... O sea, de la parte externa, esto me parece que está superchévere. Eeeh, funciona como una forma de que la gente tenga aquí un catálogo que ver de una vez.
+
+[02:06] Alejandro: Sí, de una vez.
+
+[02:07] Naylu: Eh, y se, y se acople a, a las fechas.
+
+[02:10] Alejandro: Tal cual.
+
+[02:10] Naylu: En cuanto a cómo nosotros hacemos para-- porque, ¿qué pasa? Nosotros manejamos más de treinta propiedades y no son de nosotros.
+
+[02:18] Alejandro: Sí, claro.
+
+[02:19] Naylu: O sea, no es como que un solo condominio o algo, sino que, eh, son de distintos propietarios. Entonces, nuestra disponibilidad siempre está sujeta a ellos, es decir, a lo que ellos nos vayan avisando. Lo que nosotros hemos implementado es, mmm, eh, que vayan anexando su disponibilidad del calendario de Airbnb por Google Calendar. O sea, los, lo que hicimos fue sincronizar-
+
+[02:46] Alejandro: Claro
+
+[02:46] Naylu: ...esos calendarios. Entonces, ya en caso de que ellos tengan una reserva, ya a nosotros nos sale bloqueado, porque nosotros estamos desarrollando un, mmm, estábamos desarrollando un chatbot.
+
+[03:00] Alejandro: Vale.
+
+[03:00] Naylu: Y, y eso, pues. Entonces, eh, tenía que ir sujeto a esa, a esa disponibilidad. Ya te voy a mostrar un poquito cómo se ve la... Porque lo ideal es que si se fuera a hacer esto, que estoy viendo acá, que también se lea eso, ¿sabes?
+
+[03:18] Alejandro: Sí, claro. De hecho-
+
+[03:19] Naylu: No sé si se pueda.
+
+[03:19] Alejandro: Eh, estoy ahorita, eh, teniendo una idea de justo lo que me estás diciendo en base a tu necesidad y sería excelente incluso que tú le agregaras incluso más valor a lo que es Llégate a Lechería como, como empresa, digamos, que le estás, eh, justamente buscando huéspedes a, a los, a los inq-- a los anfitriones, pues, en este caso. Y, eh, que cada, eh, dueño del apartamento tenga la aplicación solamente en modo de que puedan poner allí cuando se alquile, cuando ya no se haya alquilado, etcétera. Entonces, eso le puede agregar valor a tu servicio, pues, mismo. Y que ya tú tengas también en cuenta: mira, ya el, del treinta hasta el segundo está alquilado. Entonces, yo no puedo ya dedicárselo a otras personas y así.
+
+[04:09] Naylu: Exacto. O sea, a ver, por ejemplo, estos son todos los calendarios que nosotros tenemos sincronizados. Aquí abajito están, pasa que están, están destacados, pero ve que sale, por ejemplo, si se res-- si este propietario lo reservó, sale aquí.
+
+[04:26] Alejandro: Claro.
+
+[04:26] Naylu: ¿Entiendes?
+
+[04:28] Alejandro: Bueno, justamente-
+
+[04:29] Naylu: Entonces, si yo lo quito...
+
+[04:30] Alejandro: Para que no sea tan arcaico y no se vea tan lioso, se puede poner un poco más simple en, en el sistema, pues en la página, digamos.
+
+[04:40] Naylu: Exacto. Aquí lo que pasa es que nosotros también tenemos otra cosa que... O sea, a ver, ¿en qué te, de-- o sea, qué haces tú específicamente?
+
+[04:51] Alejandro: Yo...
+
+[04:51] Naylu: Tú desarrollas páginas web, pero también, ¿qué, qué, qué haces?
+
+[04:55] Alejandro: Yo desarrollo páginas web, desarrollo sistemas, desarrollo automatizaciones. También estoy con la parte de ediciones de video. Tengo, mmm, en este momento dos agencias, una de contenido y otra es de, ahorita que estamos creando, de páginas web junto con un socio en España, que por lo menos tenemos ya clientes que si de gimnasio para implementar, eh, aplicaciones, apps web, eh, entre otras cosas. Eso es más o menos lo que hago también. Y...
+
+[05:24] Naylu: Mmm.
+
+[05:24] Alejandro: Y un poco de todo, la verdad. O sea, incluso publicidad, marketing, apoyar cuentas, etcétera.
+
+[05:32] Naylu: Okey. O sea, también te encargas de desarrollar sistemas.
+
+[05:36] Alejandro: Sí, también puedo encargarme de desarrollar sistemas. Ya cosas que sean un poco más complejas, también que sea de, de programación o, o ese tipo de edición, tengo cualquier cosa a mi, a mi compañero que te digo de, de España, que él, pues ya está graduado de eso, ya estudió bastante y ya tendría más los conocimientos que yo.
+
+[05:53] Naylu: Claro.
+
+[05:53] Alejandro: Pero siempre intermedio yo.
+
+[05:57] Naylu: A ver, porque nosotros, eh, mandamos a desarrollar algo que, que bueno, si ustedes lo pueden optimizar, buenísimo, pero esto es más interno, ¿no?
+
+[06:05] Alejandro: Okey.
+
+[06:06] Naylu: Eh, nosotros tenemos un... Eh, lo que hacemos es que cada reserva nosotros la registramos manualmente por Excel. Eeeh, ca-cada venta y cada, cada cosa. Pero ahora lo que hacemos es que, te explico. Nuestro proceso de ventas funciona así: la gente nos escribe por WhatsApp.
+
+[06:27] Alejandro: Okey.
+
+[06:28] Naylu: Eh, consulta no sé qué, enviamos las opciones disponibles y luego de que se-- si se concreta una reserva, eh, se hace una confirmación de reserva como por mensaje. Ay, no se ve. Bueno, se hace una confirmación de reserva como con una plantilla de texto predeterminado y no sé qué. Esa confirmación, lo que estamos haciendo ahora es, eh, pasarla al Telegram, a un grupo de Telegram que se llama Producción.
+
+[06:57] Alejandro: Okey.
+
+[06:57] Naylu: Y cuando lo pasamos a ese grupo de Telegram, eh, porque tengo un problemita con mi número de WhatsApp por el tema del chatbot, que lo estamos solucionando.
+
+[07:06] Alejandro: Vale.
+
+[07:06] Naylu: Cuando, cuando lo pasamos por el grupo del Telegram, que ya te lo voy a mostrar acá. A ver, ajá. Lo pasan así, este, este es el, el formatico de la confirmación. Tres noches, el cliente, no sé qué. Entonces, automáticamente dice: reserva guardada en la hoja de octubre. Es decir, que automáticamente cuando nosotros pasamos esto, se guarda acá, en nuestro Excel.
+
+[07:33] Alejandro: Okey.
+
+[07:33] Naylu: Sin necesidad de que yo tenga que estar escribiendo manualmente, pues.
+
+[07:37] Alejandro: Perfecto.
+
+[07:38] Naylu: Eh, y también lo que me hace esto, que por ejemplo, aquí pone ganamos tanto, o sea, aquí nosotros aparte ponemos cuánto ganamos de comisión y aquí lo, lo va registrando. Aquí lo que me hace también, adicional, es que me envía recordatorios de clientes por cobrar, porque, o sea, por ejemplo, a mí me pueden reservar, en este caso, el 31 deee octubre y van a est-- y la fecha de entrada, ejemplo, es el 8 de noviembre.
+
+[08:09] Alejandro: Claro.
+
+[08:09] Naylu: ¿Me entiendes? Entonces, el cliente siempre paga, es con un monto inicial, por ejemplo, el costo por noche de ochenta euros.
+
+[08:18] Alejandro: Vale, dale.
+
+[08:19] Naylu: Lo restante lo paga, es al llegar, cuando el cliente ingresa-
+
+[08:23] Alejandro: Claro.
+
+[08:23] Naylu: Al apartamento. Entonces, acá también lo que me hace es que me envía recordatorios de, eh, cuando el cliente entró, cuando el cliente no entró, que está por cobrar, que no está por cobrar. Ehm, y así. No sé si ustedes han desarrollado como un sistema mejor para que-- administrativamente, pues.
+
+[08:50] Alejandro: Sí, bueno, en este caso, por lo menos con el de tu vía en Tucacas, la administradora lo único que tiene que hacer es, ya sea que le llegue de Stay o le llegue de Airbnb, o le llegue mediante la página o por Instagram o por TikTok, una vez que se apruebe la reserva, es decir, se ejecuta el pago, eh, automáticamente, este, esa-- al registrar el pago, pues al confirmarlo, eso ya se agrega en la página. O sea, ya se coloca como tachado esas fechas, del tal día a tal día. Y le envía recordatorios a su teléfono como notificaciones de-- típicas de celular, en la que te está diciendo: "Bueno, falta por cobrar tal". O en este caso, como tiene también vinculada a la señora de limpieza, llamada Zuleica, le llega la notificación a Zuleica de que tiene que, por ejemplo, entregar las llaves del apartamento, eh, ya las personas están llegando, tiene que lavar el apartamento, este, tiene que cobrarles la garantía, o sea, tiene que mantenerles cien dólares de garantía, tiene que devolvérselos. Todas esas cosas, eh, se les va registrando, se le va llegando a, a notificaciones, tanto al teléfono de la que limpia, que en este caso sería Zuleica, como a la dueña del condominio. También, en este caso, ella, bueno, hace inventario-
+
+[10:03] Naylu: Vale.
+
+[10:03] Alejandro: Acerca de todas sus cosas y le mandan también una notificación cuando ya se haya llegado a un umbral, que en este caso hay algunos clientes que pagan nada más en efectivo y como-
+
+[10:14] Naylu: Mhm.
+
+[10:14] Alejandro: Mi cliente no puede estar yendo siempre a Tucacas, pues se lo guarda una persona y cuando ya llegue a cierto límite ya es como que: mira, acuérdate que tienes que ir a buscar la cantidad de tantos, tantos dólares. Entonces, sí podemos enseñarte ese sistema-
+
+[10:27] Naylu: Vale, eso.
+
+[10:28] Alejandro: Mejor y bien. O sea, la idea es que dejes de utilizar como esas cosas de Excel, Google Calendar y-- o pues, se puedan seguir usando, pero se vea mejor en un-- todo en un solo sistema, que no tengas que ir variando en tantas cosas. Todo lo puedes manejar desde tu celular, desde una computadora, desde el celular de un amigo, con tu cuenta, etcétera.
+
+[10:51] Naylu: Vale, vale. Eh, sí, eso me serviría muchísimo, porque acá tengo muchas cosas por cobrar, pero siento que este sistema que me desarrollaron tiene ciertas falencias. Porque, por ejemplo, hay cositas acá que si, sabes, hay veces que hay reservas que son muy, o sea, puede variar dependiendo de la negociación con el cliente. Por ejemplo, nos ha pasado que nos adjuro, eh... Nos-nuestro pago siempre se divide en dos, la, el de la reserva y el pago cuando el cliente llega. Pero a veces nos pasa que los propietarios nos dicen, nos dicen: "Mira, mejor descuéntate todo de la reserva, porque ya van a ingresar mañana, ¿sabes?-
+
+[11:32] Alejandro: Claro.
+
+[11:32] Naylu: Para no estar pendiente, que te tengo que pagar a ti como intermediario". Entonces, nosotros lo hacemos, entonces, cada vez que, que pasa algo así, eh, y no se registra bien, entonces hay que estar revisando acá o tengo que estar como que: mira, sabes que no, no lo está haciendo así, así, asado. Claro, yo entiendo que todo sistema tiene que ir aprendiendo a lo largo del tiempo, pero me gustaría que de cierto modo u otro, no sé si existe una forma de nosotros tener libertad de que si hay, por ejemplo, hay una diferencia de reserva que nosotros podamos arreglarlo, ¿sabes?
+
+[12:10] Alejandro: Manualmente, sí. Claro, yo entiendo
+
+[12:13] Naylu: Para no tener que estar como que mira, ¿sabes qué? ¿Sabes? Si, si, si-
+
+[12:18] Alejandro: Sí, sí, sí entiendo. La verdad es que yo por lo menos no me gustaría que siempre se, se dependa justamente de que us-ustedes, que son clientes, en este caso, tengan que estar como viendo algo que no les funciona del todo, quieran acomodarlo, pero no, ¿sabes? El que lo puede acomodar es el programador, el que hace los sistemas, etcétera. Y la idea es no estar con eso. La idea es que entregarte un sistema que funcione y hasta que no estés contenta, cómoda con las distintas opciones que te puede ofrecer el sistema, eso, el sistema no está listo por completo. Eh, nosotros creamos un sistema que va aprendiendo junto contigo. Nosotros te hacemos algo y seguramente, eso me ha pasado incluso a mí, yo mismo utilizando la, la página de Tú quieres tu caca o enseñándole a la administradora o ella misma utilizándolo, nos damos cuenta de que, por ejemplo, puede faltar una función nueva que quiera agregarle, pero es muy mínima y cambia por completo muchas cosas. Por ejemplo, antes ella no tenía la opción de que hay veces que no, no van clientes que le pagan, simplemente van familiares o amigos. Entonces, ella a veces le hace el favor y seguía marcando el pro-- el sistema como que nosotros marcábamos que iban el domingo hasta el martes. Y entonces, le llegaba la notificación de Zuleyka, entonces Zuleyka le tenía que escribir: "Mira, pero si viene persona tal, no". Entonces, ya ahora podemos agregar que es un familiar. Listo, no hay ingreso, no hay nada.
+
+[13:38] Naylu: Exacto. Lo, lo chévere que yo veo de esto es que si lo pueden utilizar los propietarios para que, o sea, para que ellos, para que también les sirva como sistema de recordatorio, como que: "Mira, esta vez tienes un cliente con nosotros".
+
+[13:50] Alejandro: Tal cual.
+
+[13:51] Naylu: Eh, también sería chévere que a ellos les salga como una interfaz de cuánto han generado con nosotros en el año, ejemplo.
+
+[13:58] Alejandro: Mhm. Eso es muy cool y sirve para testimonio incluso. Entonces, testimonio personal que tú le puedes enviar a otras personas, que veas cuánto se le ha sacado y cuánto han generado esas personas gracias a lo que tú haces. Y, como digo, le aumenta bastante valor. O sea, llegarle a un cliente que tenga un apartamento en lechería y proponerle que va a tener su propio sistema más moderno, cosa que no todos allá o casi que nadie la, lo, lo tiene. Un sistema que puedes mostrarles, comentarles que ellos pueden tener el orden de sus finanzas allí en cuanto al apartamento, de los gastos que puedan hacer, eh, constantemente para reponer cosas del apartamento, cuánto se te paga a ti. Y siempre es como, me imagino que tú lo manejas por porcentaje, ¿cierto? ¿O por cantidad?
+
+[14:44] Naylu: Sí, por porcentaje.
+
+[14:44] Alejandro: Por porcentaje, pues tal cual. Entonces, si es por porcentaje, que ya ellos tengan ese porcentaje según lo que le des a cada cliente. Y tú, tú como administradora dueña, tengas el control de, o tengas la, la visualización, pues de todos esos apartamentos y de todos esos clientes que tú tienes. Y puedas también tener tu desglose mensual de cuánto has generado gracias a, pues toda la cantidad de clientes que has tenido, quién te ha rendido más, quién te ha rendido menos, quiénes, cuáles han alquilado más.
+
+[15:09] Naylu: Exacto. Porque el problema acá es que, eh, ellos no llevan un control realmente. Y acá, o sea, por ejemplo, yo lo que hago siempre es que, o sea, para yo enviarles un reporte, y es muy tedioso para mí, eh, ah, me meto en Cloud y les paso todos estos Excel y digo: "Mira, eh, necesito hacerle un análisis de mercado a este propietario para que sepa cuánto le hemos generado en el año".
+
+[15:39] Alejandro: Claro.
+
+[15:40] Naylu: Entonces, eh, Cloud lo procesa, no sé qué, y me genera el reporte bien chévere, pero no estaría mal que de una vez en la aplicación estuviera, ¿sabes?
+
+[15:48] Alejandro: Sí, bueno, mientras tú vayas todo durante todo el mes, eh, anotando todo lo que se va haciendo y ese sistema vaya creando ya toda la, la recolección, la recuperación, pues de todo lo que se ha hecho, tú con darle a un botón-
+
+[16:02] Naylu: Sí.
+
+[16:02] Alejandro: Generar ficha de tal para tal cliente, se te genera automáticamente y lo puedes enviar, incluso para compartírselo.
+
+[16:09] Naylu: Exacto. Exacto. Y también, o sea que si, no sé si eso se puede, que el propietario tenga acceso, pero como que sea otra interfaz-
+
+[16:18] Alejandro: Mhm.
+
+[16:18] Naylu: En donde les llegue la notificación de: mira, tal día te ingresa el cliente de llégate lechería. Entonces, y que incluso se meta y en la interfaz lo que le salga es, bueno, cuánto ha generado con nosotros, cuántas noches ha alquilado, sin necesidad de enviar reportes, ¿sabes?
+
+[16:35] Alejandro: También, también eso es excelente y, y le podemos añadir la función también de reportes a, de reporte no, de resumen mensual a esa persona por si quiere tenerlo más organizado. Al final todo es cuestión de, de, de verlo y automatizar los procesos. O sea, lo, lo ideal aquí es esa palabra, automatizar. Porque con mi clienta, por ejemplo, con el de Tú quieres tu caca, siempre veía, y eso es algo que ella no me comentó, pero yo me fui dando cuenta, que cada vez que venía un cliente nuevo, una persona nueva a hospedarse, eh, ella tenía que marcar una ficha de ingreso. Ella tenía que rellenar una ficha de ingreso hacia la, la garita de vigilancia para que le den acceso. En eso tenía que estar la cédula de las personas, el número de las personas, el teléfono de las personas, el, la matrícula del carro, el, el modelo del vehículo. Entonces, ella cada vez que le, que les pedía eso, tenían ellos que rellenar todo eso rápido y luego mandárselo a ella, para ella después con todo ese texto que le enviaron por WhatsApp, porque hay gente que va en la vía, gente que no tiene tiempo para escribir mucho, eh, ella tenía que entonces ponerse en Excel e ir rellenando. Todo muy lento y la verdad es que después hay veces que llegaba la gente: "Ya va, que no hemos mandado el, el ingreso, denme un momento". Entonces, eso perdía un poco de, ¿sabes? Un poco de, de profesionalismo en esa parte. Pues se le creó rápidamente, se le implementó ahí en el sistema un apartado que dice, eh: fichas de ingreso. Ella se coloca allí y puede, tiene dos, tres opciones. La primera, escribirlo manualmente ella, pero con un sistema un poco más, más lindo, pues más organizado. Ese sigue siendo manual, tú escribes a mano. Sin embargo, ese no se utiliza porque están los otros dos, que el primero vendría siendo, eh, que tú le envías un capture Del ingreso de las personas, o sea, de lo que te escribieron las personas, o copias el mensaje de WhatsApp que te escribió la persona y se lo mandas a un chat que está allí y te ingresa la ficha, ya te la genera de una vez, ya lista con todo. Y lo tercero-
+
+[18:33] Naylu: Okey.
+
+[18:34] Alejandro: Es como algo que lee con IA, en el cual tú le mandas la foto de una cédula a una persona y ya te saca el número de cédula y todo el nombre completo. Entonces, tú solamente con subir las cédulas de las personas y una foto de la matrícula que ellos mismos te envían, ya todo eso te lo genera automáticamente. Te genera la ficha y tú puedes seleccionar ahí si quedártela o enviarla directamente a Gadget. Entonces-
+
+[18:58] Naylu: Claro.
+
+[18:59] Alejandro: Esa es la idea. Y ahora, simplemente, cuando le llega una persona, se tarda menos de un minuto en hacer eso.
+
+[19:05] Naylu: Claro, me parece, me parece chévere eso. Ehm, bueno, una consulta. Me imagino que esto, al tener sistemas de IA y todo, eso tiene como una mensualidad, ¿correcto?
+
+[19:16] Alejandro: Sí, con una mensualidad, exactamente.
+
+[19:20] Naylu: Okey. Más o menos, este, mostrándote aquí mi sistema administrativo, que a mí me gustaría obviamente mejorarlo.
+
+[19:27] Alejandro: Claro.
+
+[19:28] Naylu: Porque me gusta-- Oh, yo siempre digo que toda la, toda una base de datos tiene que vivir en un Excel.
+
+[19:36] Alejandro: Sí, sí.
+
+[19:36] Naylu: O sea, es como que, o sea, porque uno no sabe si el sistema se llega a caer, lo que sea.
+
+[19:42] Alejandro: Sí, sí.
+
+[19:42] Naylu: Está un Excel, eh, madre, ¿no?, principal.
+
+[19:45] Alejandro: Claro.
+
+[19:46] Naylu: Eh, pero sí me gustaría mejorarlo, que por lo menos también me permita a mí visualizar mejor mis finanzas de forma interna. Pues porque ve, yo tengo esto, yo tengo esto, eh, que son los ingresos. O sea, aquí me sale, eh, ingresos acumulados, comisiones pendientes, total a percibir, no sé qué. Y también tengo otro que es para, eh, lo que es los gastos de la empresa, pues como tal.
+
+[20:19] Alejandro: Vale.
+
+[20:19] Naylu: ¿Entiendes? Tengo dos cosas separadas.
+
+[20:22] Alejandro: Okey.
+
+[20:23] Naylu: Y me gustaría, eh, un sistema que me permita leer mejor mis finanzas.
+
+[20:30] Alejandro: Claro.
+
+[20:30] Naylu: También, o sea, de forma interna de la empresa, pues como tal.
+
+[20:34] Alejandro: Mhm.
+
+[20:35] Naylu: Entonces, ve que acá sale, eh, lo que va saliendo. Ah, no, esto no, esto se bugea. Esto yo lo que hice fue conectarlo con, con este otro-
+
+[20:48] Alejandro: Vale.
+
+[20:49] Naylu: Con JavaScript.
+
+[20:50] Alejandro: Okey.
+
+[20:50] Naylu: Con, con Java, este, y que, y sí lo hace, pues. Pero sí me gustaría que, o sea, eh, tener un sistema interno-
+
+[21:02] Alejandro: Mhm.
+
+[21:02] Naylu: Que tenga todo.
+
+[21:04] Alejandro: Claro.
+
+[21:04] Naylu: Porque nosotros también tenemos como un... Te estoy contando todo, o sea, todo lo que hacemos para que tú más o menos des soluciones en base a lo que te cuente.
+
+[21:14] Alejandro: Sí, no, perfecto, yo voy anotando todo y me parece excelente que, que me digas así cada una de las necesidades, porque hay veces que no dicen todo y se quedan con-- guardados con eso.
+
+[21:23] Naylu: Claro. Nosotros lo que también tenemos es que, por ejemplo, un proceso de captación. Es decir, ¿cómo hacemos nosotros para recibir una propiedad? Eh, primero tenemos que, eh, le enviamos la propuesta al propietario, eso es un PDF, en donde le explicamos todos nuestros servicios y ta, ta, ta y no sé qué. Y luego de eso, el cliente, cuando nos, cuando yo visito una propiedad, este, tengo que, voy con un formulario. Déjame ver si por acá me sale. ¿Dónde está el form acá? Ajá, acá. Voy con un formulario, eh, en donde voy cheque-- voy diciendo todo lo que tiene: capacidad, si tiene ascensor. O sea, porque ya aquí me permite, que yo tengo preguntas ya, porque a veces se me olvida.
+
+[22:19] Alejandro: Claro.
+
+[22:19] Naylu: O sea, cuando voy a visitar una propiedad, se me olvida hacer ciertas preguntas.
+
+[22:23] Alejandro: Mhm.
+
+[22:23] Naylu: Entonces, acá, eh, me permite hacer todas las preguntas necesarias y acá van las respuestas y todo eso. Y ya después de eso, nosotros después de que están acá en el, en el Sheet, por ejemplo, esto, esto es algo nuevo, eh, se lo mandamos a Cloud o a Gemini para que nos haga una plantilla de texto para enviarle a, a los clientes, pues. O sea, como que: "Mira, en base a esto créame una plantilla", tal.
+
+[22:50] Alejandro: Sí, sí.
+
+[22:50] Naylu: Que la plantilla se ve más o menos así. Por ejemplo, aquí está baya redondo. Entonces, eh: "Disfrute de Lechería desde ta, ta, ta, ta". Eso es para enviarlo a los clientes cuando van consultando.
+
+[23:02] Alejandro: Okey.
+
+[23:03] Naylu: Entonces, pero ves que todo habita en distintas cosas.
+
+[23:07] Alejandro: Sí, yo quiero que-
+
+[23:08] Naylu: O sea, todo está como-
+
+[23:09] Alejandro: Tú tengas un ecosistema, tú propio, de todo Llegué a Lechería, y que tú como administradora puedas englobar, pues todo. Digamos que lo importante es lo que va a estar detrás del, de lo que la gente ve, que un cliente-
+
+[23:22] Naylu: Exacto.
+
+[23:22] Alejandro: Podría simplemente ver la landing page, ver los departamentos disponibles y decirse: "Pues lo mejor". Pero tú como administradora, tú como dueña, tienes que tener el orden de todas esas cosas en uno y tú misma puedes incluso generarle ingresos. Y esto te lo digo como algo, eh, extra, porque sé que ya le generas a esto-
+
+[23:38] Naylu: Mhm.
+
+[23:38] Alejandro: Pero puede ser como algo extra a tus, eh, propietarios, a los clientes, pues que tengas, eh, en tu portafolio de clientes. Le puedes proponer justamente que ellos tengan la pri-- la misma aplicación, se lo puedes agregar como un valor adicional o puedes cobrarles incluso una mensualidad a ellos, muy mínima, este, que ellos paguen para tener todo ese sistema, que ello también les puede, les puede gustar tenerlo más organizado. Eso lo puedes incluir en tus, en tu, en tu servicio. O sea, punto es que te voy a, te voy a entregar algo, eh, busco entregarte algo que puedas manejar todo en un solo lugar y sigas teniéndolo de manera, eh, firme, porque lo que acabas de decir, de que puede que el sistema falle, si tal cosa falla, que tú lo tengas de alguna manera allí. Entonces, que siga estando conectado con, con Excel, que siga conectado con todas esas cosas- Pero no lo vas a manejar de allí. Simplemente se va a alojar y guardar allí
+
+[24:32] Naylu: Exacto, como una base madre de datos. Entonces, ve, por ejemplo, acá, cuando nosotros cerramos las reservas en la semana, ponte que en la semana cinco reservas. Entonces, acá la asesora de ventas, eh, llena casilla por casilla todo, o sea, de dónde vino el cliente, de qué estado vino, cuántas personas fueron, qué red social fueron y no sé qué. Y acá lo que nos hace es, bueno, una base de datos de todos los clientes que hemos tenido, pues-
+
+[25:02] Alejandro: Claro
+
+[25:02] Naylu: ...obviamente. Eh, pero es que todo, o sea, todo está en distintas cosas.
+
+[25:09] Alejandro: Tal cual.
+
+[25:10] Naylu: Y, y obviamente, eh, para nosotros por ahora es chévere, pero ahorita, o sea, como estamos ya desde hace tres meses estamos utilizando cloud y todo eso, cada vez como que van, vamos desarrollando distintos formatos o distintas cosas.
+
+[25:26] Alejandro: Mhm.
+
+[25:27] Naylu: Entonces, las cosas se van perdiendo.
+
+[25:30] Alejandro: Claro.
+
+[25:30] Naylu: Entonces, obviamente, a mí me interesa como un sistema que, en el que podamos tener, eh, todo. ¿Qué otra cosita, a ver, es que se me escape de forma interna, pues? Que de forma externa, eh, lo de la landing y eso me parece chévere. El cliente no necesita mucho, es más, el cliente lo que pasa es que también ellos están muy adaptados a hablar por WhatsApp.
+
+[25:52] Alejandro: Claro, también.
+
+[25:53] Naylu: Entonces, yo, yo considero que, o sea, por ejemplo, esa, esa landing está chévere para que ellos evalúen disponibilidad o si un domingo, por ejemplo, que nosotros no atendemos, se puedan meter, eh, y todo eso, pero que siempre tengan la, que siempre existe un botón en el que, o sea: "Mira, si tienes cualquier duda, acá está nuestra asesora de ventas disponible".
+
+[26:16] Alejandro: Claro.
+
+[26:17] Naylu: Y que te redirija al WhatsApp.
+
+[26:19] Alejandro: Tal cual.
+
+[26:19] Naylu: Porque también no sé si eso a nivel de ads me puede funcionar. Tipo... Sí, también me puede funcionar. O sea, que se redirijan hacia allá de una vez y que si quieren una atención más personalizada, que llenen un formulario o algo así. No sé.
+
+[26:40] Alejandro: No suena mal. Pero cuando dices tema ads-
+
+[26:42] Naylu: Sí
+
+[26:42] Alejandro: ...es por la re-reaccionar las páginas o, o para algo propio de, de lechería.
+
+[26:47] Naylu: Exacto. Exacto, exacto. O sea, porque yo también tengo las ads activas.
+
+[26:52] Alejandro: Okey.
+
+[26:52] Naylu: Y lo que hacemos siempre es que, bueno, consulta ahí mismo en, en, en Instagram, porque está el tema de que como aquí en Venezuela como que WhatsApp y Instagram no compaginan mucho si le da clic al botón, ¿sabes?
+
+[27:08] Alejandro: Ajá, sí.
+
+[27:08] Naylu: No sé si tú cuando has activado ads es como que te genera el problema de que este número no se puede colocar en esta sí porque es de Venezuela.
+
+[27:16] Alejandro: Sí, sí, me ha pasado.
+
+[27:18] Naylu: Entonces, o sea, a veces quiero que los clientes directamente cuando vean la publicidad de Instagram lleguen a WhatsApp, pero no sucede.
+
+[27:25] Alejandro: No, le, le mandan-
+
+[27:25] Naylu: Entonces, lo que hacen-
+
+[27:26] Alejandro: ...un mensaje directo por Instagram.
+
+[27:28] Naylu: Un mensaje directo por Instagram. Entonces, también lo que se puede hacer es que se coloque esa...
+
+[27:35] Alejandro: La página.
+
+[27:36] Naylu: Ese catálogo, pues-
+
+[27:37] Alejandro: Sí, sí
+
+[27:37] Naylu: ...esa página-
+
+[27:38] Alejandro: Con la link
+
+[27:38] Naylu: ...dependiendo de cómo, cómo se, se coloque, se haga bien un embudo de ventas allí.
+
+[27:43] Alejandro: Sí, sí.
+
+[27:43] Naylu: Pero, este, mmm, a ver qué otros formatos así, así, así... Ah, bueno, tenemos también la cartera de propiedades.
+
+[27:54] Alejandro: Claro.
+
+[27:55] Naylu: Que esas son todas las propiedades con, con las características y, y todo, pues. Mira, ya te lo voy a mostrar. Lo tenemos en Notion, pero también lo tenemos en-- Te lo voy a mostrar en Excel, porque... En Notion es como un poquito más visible. Es la manera de que si, bueno, si llega alguien nuevo, si, eh, la asesora de ventas, por ejemplo, se va de vacaciones y llega alguien nuevo-
+
+[28:20] Alejandro: Mhm
+
+[28:21] Naylu: ...este, podemos mostrárselo y a-- y que aprenda más rápido de las, de las propiedades. Se llama cartera. Cartera . Ah, no, esta no es. Pero ve, todo mal. O sea-
+
+[28:39] Alejandro: Ya
+
+[28:41] Naylu: Es, e-el, el, o sea, cero, cero digerible.
+
+[28:45] Alejandro: Sí, cero intuitivo también, muy lioso. Tienes que buscar entre varias Excel cuál es el que quiere.
+
+[28:55] Naylu: No, esta no es. ¿Ves? No la consigo.
+
+[28:57] Alejandro: Claro, ese es el problema.
+
+[28:58] Naylu: Porque hay tantas cosas que no, no la consigo, se pierde. Pero vea, a, o sea, ahí salen. Ya va. No, tiene que estar aquí. ¿Qué es? Vale, ¿cómo se va a perder así? Vamos a estar... Inventario maestro. Ah, es que ahora se llama así, se me olvidó. Entonces, acá sale todo lo que es propiedad, eh, la cantidad de habitaciones, el teléfono de contacto del propietario, la capacidad. Eh, acá el tema de los precios, ¿qué pasa? A la hora de, de que si se hace lo de la landing page, nosotros como manejamos un gran volumen, los propietarios a veces suelen cambiar su precio.
+
+[29:38] Alejandro: Okey.
+
+[29:38] Naylu: Nosotros los hemos tratado de entrenar para que sean, eh... que tengan un precio de temporada baja fijo y uno de temporada alta fijo. Sin embargo, esto, esto puede cambiar. O sea, lo importante es que siempre en la landing abajo salga como que: "Mira, estos precios están sujetos a-
+
+[30:02] Alejandro: Están sujetos a cambios
+
+[30:03] Naylu: ...a cambios, eh, consulta". Eh, de todas maneras, tienes que consultar.
+
+[30:06] Alejandro: Claro.
+
+[30:06] Naylu: O sea, igual tienen que llegar al WhatsApp, porque, bueno, puede, puede variar. Entonces, eh, por ejemplo, a veces el costo incrementa por la cantidad de personas y así. Entonces, acá, por ejemplo, utilizamos que si un costo general, si el precio es cincuenta, independientemente sean cinco, cuatro, tres, dos, una persona. Escalonado, si el costo varía dependiendo de la cantidad de personas Y incremento, si es como que, bueno, si son hasta cinco personas es tanto, pero si son seis, siete, es tanto. No es un precio escalonado que incrementa por cantidad. Entonces, esto también lo tenemos aquí así y en Notion lo tenemos un poquito más visible, se ve la foto de la propiedad y, y todo eso, ya te lo vamos mostrando. ¿Ves?
+
+[31:05] Alejandro: Vale, ya, ya.
+
+[31:06] Naylu: Entonces, acá, acá está así y entonces, pero igual todo esto está en la cartera, pues. Pero ¿qué pasa? Si nos modifican un precio o si nos modifican una característica o algo, entonces la asesora de ventas se tiene que meter aquí para cambiarlo.
+
+[31:27] Alejandro: Mhm.
+
+[31:28] Naylu: Eh, y aquí.
+
+[31:30] Alejandro: Claro.
+
+[31:31] Naylu: Y a lo largo del tiempo es muy difícil.
+
+[31:34] Alejandro: Totalmente.
+
+[31:34] Naylu: O sea, a lo largo del tiempo como que se van cambiando cosas, eh, y, y no, y se nos va olvidando. O sea, se, o sea, por ejemplo, ya yo sé que este formato de Notion lo tenemos un poquito en el olvido.
+
+[31:45] Alejandro: Sí.
+
+[31:45] Naylu: Ya sa-- ya sé que este formato a la hora de que, mira, eh, la asesora de ventas le pasa algo y tengo que delegar el trabajo a alguien más, yo sé que igual tengo que revisarlo.
+
+[31:55] Alejandro: Sí, sí.
+
+[31:56] Naylu: Porque hay cosas acá que, que no están actualizadas. Entonces, lo ideal es algo que, que mira, eh, incluso que de recordatorios o algo, de modificaciones que, que: "Mira, este, ¿hay alguna modificación en tus propiedades?" Bueno, colócala acá esta semana, pues. En cuanto a precio, en cuanto a lo que sea. Eh, ¿qué otra cosa tenemos? Bueno, por ahora es eso.
+
+[32:26] Alejandro: Okey. Mira, yo estoy pensando aquí con lo de la cartera de propiedades, que, eh, si me dices, bueno, qué, qué trabajadores, digamos, tienes, eh, tú, porque me comentaste de asesoras de venta, tú misma, ¿y hay alguien así extra o...?
+
+[32:42] Naylu: No, no.
+
+[32:43] Alejandro: Okey, perfecto.
+
+[32:43] Naylu: Por ahora, o sea, a ver, so-siempre en el equipo como tal, o sea, para-
+
+[32:48] Alejandro: El equipo, tal cual.
+
+[32:49] Naylu: Para lle-llegar a ofrecer el servicio general siempre está, eh, yo parte de marketing.
+
+[32:58] Alejandro: Mhm.
+
+[32:58] Naylu: Y todo lo que tenga que ver con relaciones públicas y todo eso.
+
+[33:02] Alejandro: Vale.
+
+[33:02] Naylu: Ya, un momentico.
+
+[33:03] Alejandro: Claro, no te preocupes.
+
+[33:34] Naylu: Ajá.
+
+[33:35] Alejandro: Mhm.
+
+[33:36] Naylu: Este, mmm, ok, eh, la asesora de ventas, que es una.
+
+[33:43] Alejandro: Ok.
+
+[33:44] Naylu: Cuando ella se va de vacaciones, entra otra persona.
+
+[33:47] Alejandro: Vale.
+
+[33:47] Naylu: Em, ¿qué otra cosa? Está el anfitrión o el propietario, porque a veces, eh, a veces solo son anfitriones, es decir, personas que se encargan de administrar el apartamento.
+
+[34:01] Alejandro: Vale.
+
+[34:03] Naylu: Eh, eso significa que no es un propietario como tal, sino que, bueno, eh, es un asesor inmobiliario que se encarga de manejar distintas propiedades de alquiler vacacional.
+
+[34:13] Alejandro: Mhm.
+
+[34:14] Naylu: Por decirlo así. Y esa es la persona que se encarga de administrar todo lo correspondiente al apartamento, porque mayormente el propietario está fuera del país.
+
+[34:22] Alejandro: Claro.
+
+[34:23] Naylu: Y ahora, en diciembre, vamos a implementar a un anfitrión interno de Llégate para que, eso sí es, eso sería increíble, eh, incluirlo, eh, para que se encargue de entregar las llaves del apartamento y también, eh, desocupar a los, a, a los huéspedes. Eso aún lo estamos desarrollando, pero sí, sí vamos a tener a alguien, porque, eh, ¿qué pasa? Yo me puse a analizar que mi servicio es muy online. Es decir, es muy, eh, marketing, eh, y llega hasta la reserva.
+
+[35:03] Alejandro: Claro.
+
+[35:03] Naylu: Ya después de la reserva, nosotros no estamos como marca. Entonces, esta persona estaría con, entregaría material POP de la marca, con una chaquetica de la marca y así, eh, generando una atención más personalizada cuando estos clientes lleguen.
+
+[35:20] Alejandro: Claro.
+
+[35:21] Naylu: Pero, eh, netamente se encargaría es de entregar llaves. O sea, no sería como una anfitrión o una administradora como tal, de que se va a encargar, mira, de la limpieza o lo que sea. Eso siempre se lo delegamos a los mismos propietarios o anfitriones. Que igual no está mal, que si ellos quieren utilizar la aplicación, que, que bueno, si es un sistema como tú me comentaste, que le llega la notificación al, a la señora de limpieza también, y, o que le llegan los recordatorios o qué sé yo.
+
+[35:53] Alejandro: Sí, sí. Bueno, por eso digo, te, o sea, me interesa saber lo de tu equipo, porque podemos agregar allí dentro que cada quien tenga su propia interfaz. En este caso, no va a ser la misma que tengas tú, obviamente, como administradora y propietaria, o sea, y dueña, perdón, a, eh, la que va a tener, pues alguien que simplemente tiene el apartamento, eh, y ya, como la que va a tener la asesora de ventas, que me comentas en este caso que tiene lo de, eh, Notion, tiene lo de Excel, que lo puede manejar todo también mucho mejor.
+
+[36:21] Naylu: Sí. Y ella, ella también tiene que, o sea, nosotros enviamos cotizaciones. Nosotros estábamos pensando, eh, formalizar un poquito más las cotizaciones, pero, o sea, con Cloud, ¿sabes? Que te genera un PDF, una cotización chévere, pero sería ideal que si esta interfaz, o sea, que tú le des un botón, rellenes los datos y que ya te dé un PDF, ¿sabes?
+
+[36:42] Alejandro: Claro.
+
+[36:43] Naylu: Eh, ya, ya, ya estimado. Y para esta persona que va a hacer las entregas, yo considero que ella lo que, lo que nosotros queremos hacer con esto es que hay una persona posventa. Es decir, que entregue, que le haga seguimiento a los clientes, que decir: "Ay, ¿por dónde vienen? Eh, ¿cómo, cómo va todo? Y cuando se vayan, cómo se fueron, que, eh, avisen cuando lleguen, qué les pareció el apartamento, que se encargue de toda esa parte de encuestas, entrega de material POP, eh, un anfitrionaje más ameno, todo eso.
+
+[37:18] Alejandro: Claro, que se sepa que-
+
+[37:19] Naylu: Entonces también eso sería otra-- exacto. Entonces también eso sería otra, otra forma en la que ella tiene que verlo, pues, porque ya sería como más de recordatorio, como que: "Mira, este-
+
+[37:32] Alejandro: Va llegando una persona.
+
+[37:33] Naylu: "Los clientes tal, los clientes tal van a ingresar mañana. ¿Ya hablaste con el propietario?-
+
+[37:39] Alejandro: Claro.
+
+[37:39] Naylu: Para que te entregara las llaves", qué sé yo, ¿sabes?
+
+[37:42] Alejandro: Mhm.
+
+[37:43] Naylu: Eh, todo eso de, de esa forma para que, para que, bueno... Pero bueno, ve que son muchas cosas.
+
+[37:51] Alejandro: Claro, claro, no, pero está bien, me gusta que sean varias cosas. El, sobre todo, el tema del, de las reseñas y eso, ¿cómo lo, cómo lo manejan?
+
+[37:58] Naylu: No lo manejamos.
+
+[37:59] Alejandro: Nada.
+
+[37:59] Naylu: O sea-
+
+[38:00] Alejandro: Cero, no hay nada de reseñas.
+
+[38:01] Naylu: Lo que, lo que-- no, lo que hago es que, bueno, a veces cuando nos acordamos, cuando las-- lo que pasa es que a veces la asesora de ventas, a veces se nos llena mucho el, el buzón.
+
+[38:11] Alejandro: Mhm.
+
+[38:11] Naylu: Entonces es muy difícil como hacerle seguimiento a los clientes, como que: "Hey, no sé qué y tal". Entonces, realmente a veces como que nos acordamos y mandan un mensajito y nosotros lo publicamos en las historias o lo que sea. Pero a veces concha le nos hacen tan buenas reseñas y es superchimbo que no tengamos un lugar donde los clientes, los otros clientes que no nos han reservado puedan verlo.
+
+[38:36] Alejandro: Claro.
+
+[38:37] Naylu: Y a veces, a veces también hay una que incluso nos hizo un video.
+
+[38:41] Alejandro: Ah, mira, qué bueno.
+
+[38:42] Naylu: Entonces también puede tener hasta, hasta como una parte que sea como una burbuja de mensajes, ¿sabes? Tipo WhatsApp.
+
+[38:48] Alejandro: Sí, sí.
+
+[38:50] Naylu: Que, que la gente cargue y así, pues porque, eh, nuestro público es muy... entre millennial y más allá.
+
+[38:58] Alejandro: Sí, claro.
+
+[38:59] Naylu: Entonces la gente mayor es muy así, pues le gusta mandar nota de voz y, o cositas así.
+
+[39:05] Alejandro: No, bueno, está bien. O sea, todas esas cosas se pueden implementar incluso en el mismo, eh, apartamento en el que se vayan a alojar, que la persona que los vaya a retirar, en este caso que querés implementarla, por ejemplo, le recuerda, pues, que puedan dejar una reseña con un QR, que lo escanee y de una vez lo lleve a, a allá. Eh, también tema, bueno, ya tema me imagino que cosas que pasen dentro del apartamento, ¿se les comunica a ustedes también? Tipo, no sé, pasó algo que no hay agua o qué sé yo, y un temita ahí, entonces les escriben.
+
+[39:36] Naylu: Sí, bueno, en este caso, co-- si vamos a implementar a la anfitriona esta, sí, pero mayormente, eh-
+
+[39:43] Alejandro: Eso es a la propietaria.
+
+[39:44] Naylu: Lo que nosotros como, como actualmente trabajamos es a la propietaria.
+
+[39:47] Alejandro: Claro.
+
+[39:48] Naylu: O sea, nosotros lo que hacemos es después de que se cierre el proceso de ventas, eh, le remitimos el número de los clientes a nuestros propietarios y todos los detalles de, en cuanto al apartamento. Igual con esta anfitriona, igual esta anfitriona tiene que escribirle a la propietaria si hay un temita, pues.
+
+[40:05] Alejandro: Claro.
+
+[40:05] Naylu: O sea, ella lo que sería, eh, sería como el enlace.
+
+[40:08] Alejandro: Claro. No, bueno, perfecto.
+
+[40:11] Naylu: Mhm.
+
+[40:11] Alejandro: Este, me, me-- tengo bastante material aquí para trabajar, la verdad. Veo que tienes varias cosas. Yo te estaría, te estaría entregando ya con esto, que tuvimos esta reunión, mucho más práctica y todo eso, eh, una especie de, eh, formulario que tú puedes rellenar de cositas que puedas ver que, que no comentamos aquí y si te hacen falta. Eh, y también tú misma que puedas colocar allí entre las ideas que te va a proponer el formulario, si quieres implementar X cosas, si quieres implementar tal cosa, etcétera. Personalizado en base a lo que tuve, eh, contigo en esta reunión aquí de, de Llégate a la Lechería. Em, por mi parte, eh, bien, yo entendí bien cu-- tus necesidades. Pienso suplirlas con el sistema que podemos armar, tanto para ti propia como para la asesora de ventas, como para los clientes, para aumentar tu, el porcentaje de tu, de tu servicio. Y ya luego de que todo eso esté implementado, este, estaría trabajando en ello todo este fin de semana para, para contarte el formulario, hablar un poco más y ya tener una base bien sólida, sólida en la cual trabajar. Eh, te mando una-
+
+[41:17] Naylu: Una propuesta.
+
+[41:17] Alejandro: Eso, una propuesta, tal cual, para mandarte la cotización y buscar otra ve-- métodos de, de financiamiento, porque puedo, eh, ponértelo en cómodas cuotas, que puedas ir pagando en cuotas también el servicio. Eh, luego después simplemente te quedas con un plan mensual y así sucesivamente. Entonces-
+
+[41:34] Naylu: Vale, pues.
+
+[41:35] Alejandro: Bien con eso, ¿no? ¿Te parece bien? ¿Te lo mando?
+
+[41:38] Naylu: Sí, sí, me parece bien. Más o menos, eh, ¿cuánto sería el costo mensual? Es más que todo lo que me-
+
+[41:44] Alejandro: El costo mensual ahorita lo estoy estimando en cincuenta, pero puede que sea incluso treinta y cinco nada más. De treinta y cinco o cincuenta.
+
+[41:51] Naylu: Okey.
+
+[41:51] Alejandro: Entonces, yo más de ahí no, no creo que sea, porque, eh, sería nada más para suplir temas de, de programas y membresías. Entonces-
+
+[42:02] Naylu: Okey.
+
+[42:03] Alejandro: Normal. Ese sería el, el mantenimiento, digamos. Pero sería eso, de treinta y cinco y cincuenta, pero yo de igual te estaría diciendo. Puede ser incluso menos que treinta y cinco, puede ser incluso, eh, un poquito más de cincuenta, pero no, nada más loco.
+
+[42:15] Naylu: Chévere.
+
+[42:15] Alejandro: Chévere.
+
+[42:16] Naylu: Una consulta: ¿ustedes también desarrollan chatbots o no?
+
+[42:20] Alejandro: Yo creo que, eh, más que todo mi socio estará más dispuesto a, a hacer los chatbots. Le podría comentar. Ahorita tengo también una reunión con él, lo tenemos con otro cliente y, y entonces ahí le, le comento y te puedo escribir. Te digo: "Mira, sí podemos hacerte un chatbot". Sería para Llégate a la Lechería igual, ¿no?
+
+[42:34] Naylu: Vale, o sea, porque ya, ya yo tengo una base con N8N.
+
+[42:38] Alejandro: Okey.
+
+[42:38] Naylu: Eh, pero no la hemos podido implementar por ciertos temitas. Entonces, eh, sería chévere que también el, o sea, evaluar otra opción, a ver-
+
+[42:51] Alejandro: Mhm.
+
+[42:51] Naylu: Este, cómo cotiza él y todo eso.
+
+[42:53] Alejandro: Okey.
+
+[42:54] Naylu: A ver qué, qué ofrece, si ofrece CRM y esas cosas.
+
+[42:56] Alejandro: Vale, sí, sí, perfecto. Yo entonces me contacto con él, en lo que me respuesta, te lo con-- te lo contacto a ti o te lo digo, pues. Y te digo también de una vez si cuánto sería eso, cuánto cotizaría eso.
+
+[43:07] Naylu: Dale, pues. Chévere, Alejandro.
+
+[43:09] Alejandro: Dale, chévere. Chale, Donilu.
+
+[43:11] Naylu: Un placer.
+
+[43:11] Alejandro: Un placer igual.
+
+[43:12] Naylu: Chaito.
+
+[43:13] Alejandro: Chao, chao. Aló. Aló
