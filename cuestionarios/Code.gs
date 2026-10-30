@@ -5,12 +5,12 @@
  * y guarda las respuestas en este mismo Google Sheet, una pestaña por cuestionario.
  *
  *   .../exec               -> cuestionario de Alejandro
- *   .../exec?f=chatbot     -> cuestionario del chatbot (Luis Enrique), cuando exista
+ *   .../exec?f=chatbot     -> cuestionario del chatbot (Luis Enrique)
  */
 
 const FORMS = {
   alejandro: { titulo: 'Cuestionario Llégate a Lechería', hoja: 'Respuestas Alejandro' },
-  // chatbot: { titulo: 'Cuestionario chatbot Llégate', hoja: 'Respuestas Chatbot' },
+  chatbot: { titulo: 'Cuestionario chatbot Llégate', hoja: 'Respuestas Chatbot' },
 };
 
 function doGet(e) {

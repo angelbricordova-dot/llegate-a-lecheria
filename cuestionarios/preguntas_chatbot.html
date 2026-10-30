@@ -1,0 +1,34 @@
+<script>
+/* Preguntas de Luis Enrique para Naylu sobre el chatbot (Llégate a Lechería). */
+const OPT = (a) => a.map(t => (typeof t === "string" ? { v: t, t } : t));
+const MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+window.FORM = {
+  eyebrow: "Chatbot de Llégate",
+  titulo: "Naylu, cuéntanos cómo son tus <em>mensajes</em>",
+  intro: "Luis Enrique, mi socio, es quien arma el chatbot. Con estas preguntas sabe qué tiene que resolver el bot por ti y cuánto te puede ahorrar. Son 7 preguntas y no hay respuestas malas: con un cálculo a ojo basta.",
+  datos: ["3 secciones", "5 minutos aprox.", "Puedes dejarlo a medias y volver"],
+  nombre: "Naylu",
+  firma: "Preparado por Luis Enrique y Alejandro para Llégate a Lechería C.A.",
+  secciones: [
+  { id: "operacion", title: "Tus apartamentos y temporadas", intro: "Para dimensionar cuántas conversaciones tendría que atender el bot.", qs: [
+    { id: "cb_aptos", type: "line", label: "¿Cuántos apartamentos tienes?", ph: "Ej.: 32" },
+    { id: "cb_noches", type: "single", label: "¿Cuántas noches se queda la gente normalmente?", opts: OPT(["1 o 2 noches", "3 o 4 noches", "5 a 7 noches", "Más de una semana"]) },
+    { id: "cb_precio_baja", type: "line", label: "Más o menos, ¿cuánto cuesta la noche en temporada baja?", ph: "Ej.: entre 40 y 70 dólares" },
+    { id: "cb_precio_alta", type: "line", label: "¿Y en temporada alta?", ph: "Ej.: entre 70 y 120 dólares" },
+    { id: "cb_llenos", type: "multi", label: "¿Qué meses se te llenan?", opts: OPT(MESES) },
+    { id: "cb_vacios", type: "multi", label: "¿En qué meses te quedan noches vacías?", opts: OPT(MESES) },
+  ]},
+  { id: "mensajes", title: "Los mensajes de cada día", intro: "Lo que hoy te quita tiempo y lo que se pierde por no llegar a tiempo.", qs: [
+    { id: "cb_perdidas", type: "single", label: "A ojo, ¿cuántas reservas crees que se te van al mes por no contestar a tiempo?", opts: OPT(["Ninguna", "1 a 3", "4 a 10", "Más de 10", "No sabría decir"]) },
+    { id: "cb_cansa", type: "text", label: "¿Qué es lo que más te cansa de atender los mensajes?", ph: "Ej.: responder lo mismo cien veces, los que preguntan y desaparecen, los mensajes de madrugada" },
+    { id: "cb_preguntas", type: "text", label: "¿Qué te preguntan siempre?", ph: "Ej.: precio, si hay disponibilidad tal fecha, si aceptan mascotas, si tiene planta eléctrica" },
+  ]},
+  { id: "bot", title: "Cómo quieres que sea el bot", intro: "Para que esta vez sí valga la pena.", qs: [
+    { id: "cb_cierre", type: "single", label: "¿Prefieres que el bot cierre la reserva solo, o que conteste y te pase el cliente a ti o a la asesora?", opts: OPT(["Que cierre la reserva solo", "Que conteste y me pase el cliente", "Depende del caso"]), other: "Depende del caso" },
+    { id: "cb_peor", type: "text", label: "Del bot que tuviste antes, ¿qué fue lo peor?" },
+    { id: "cb_valio", type: "text", label: "¿Qué tendría que pasar con este para que digas «valió la pena»?" },
+    { id: "cb_precio_justo", type: "line", label: "¿Cuánto te parecería justo pagar al mes por algo así?", ph: "Escribe un monto aproximado" },
+  ]},
+  ],
+};
+</script>
