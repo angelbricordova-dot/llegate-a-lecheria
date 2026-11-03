@@ -110,9 +110,6 @@ def first_page(canv, doc):
     canv.saveState()
     logo = 26 * mm
     canv.drawImage(LOGO, MARGIN - 2 * mm, H - MARGIN - logo, width=logo, height=logo, mask="auto")
-    canv.setFillColor(MUTED)
-    canv.setFont("Helvetica", 9.5)
-    canv.drawString(MARGIN, H - 54 * mm, "Propuesta · Fase 1")
     canv.setFillColor(INK)
     canv.setFont("Helvetica-Bold", 22)
     canv.drawString(MARGIN, H - 63 * mm, "Sistema administrativo para Llégate a Lechería")
