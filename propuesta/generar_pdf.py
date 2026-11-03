@@ -17,12 +17,9 @@ from reportlab.platypus import (
 LOGO, SALIDA = sys.argv[1], sys.argv[2]
 
 TEAL = colors.HexColor("#0b5f78")
-TEAL_SOFT = colors.HexColor("#e3f1f2")
-SUN = colors.HexColor("#f7bf55")
-INK = colors.HexColor("#0e2f3a")
-MUTED = colors.HexColor("#5a7480")
-LINE = colors.HexColor("#d6e6e4")
-FIELD_BG = colors.HexColor("#f4f9f8")
+INK = colors.HexColor("#1d2a30")
+MUTED = colors.HexColor("#6b777c")
+LINE = colors.HexColor("#c9d0d3")
 
 W, H = letter
 MARGIN = 20 * mm
@@ -31,12 +28,11 @@ base = dict(fontName="Helvetica", fontSize=10, leading=14.5, textColor=INK, alig
 S = {
     "body": ParagraphStyle("body", **base, spaceAfter=6),
     "muted": ParagraphStyle("muted", **{**base, "textColor": MUTED, "fontSize": 9, "leading": 13}),
-    "h2": ParagraphStyle("h2", **{**base, "fontName": "Helvetica-Bold", "fontSize": 15, "leading": 19,
-                                  "textColor": TEAL, "spaceBefore": 14, "spaceAfter": 8,
-                                  "keepWithNext": 1}),
+    "h2": ParagraphStyle("h2", **{**base, "fontName": "Helvetica-Bold", "fontSize": 13, "leading": 17,
+                                  "spaceBefore": 18, "spaceAfter": 6, "keepWithNext": 1}),
     "cell": ParagraphStyle("cell", **{**base, "fontSize": 9, "leading": 12.5}),
-    "cellh": ParagraphStyle("cellh", **{**base, "fontSize": 9, "leading": 12.5, "fontName": "Helvetica-Bold",
-                                        "textColor": colors.white}),
+    "cellh": ParagraphStyle("cellh", **{**base, "fontSize": 8.5, "leading": 12, "fontName": "Helvetica-Bold",
+                                        "textColor": MUTED}),
     "label": ParagraphStyle("label", **{**base, "fontSize": 8.5, "leading": 11, "textColor": MUTED}),
 }
 
@@ -55,7 +51,7 @@ class Check(Flowable):
     def draw(self):
         self.canv.acroForm.checkbox(
             name=self.name, tooltip=self.tooltip, x=0, y=0, size=self.size, buttonStyle="check",
-            borderColor=TEAL, fillColor=colors.white, textColor=TEAL, borderWidth=1, relative=True)
+            borderColor=MUTED, fillColor=colors.white, textColor=INK, borderWidth=0.8, relative=True)
 
 
 class Field(Flowable):
@@ -69,7 +65,7 @@ class Field(Flowable):
         self.canv.acroForm.textfield(
             name=self.name, tooltip=self.tooltip, value=self.value, x=0, y=0,
             width=self.width, height=self.height, fontName="Helvetica", fontSize=9.5,
-            borderColor=LINE, fillColor=FIELD_BG, textColor=INK, borderWidth=1,
+            borderColor=LINE, fillColor=colors.white, textColor=INK, borderWidth=0.8,
             fieldFlags="multiline" if self.multiline else "", relative=True)
 
 
@@ -80,36 +76,26 @@ def labeled_field(label, name, width, height=18, multiline=False, value=""):
 def numbered(items, start=1):
     return ListFlowable(
         [ListItem(P(t), leftIndent=16, value=i) for i, t in enumerate(items, start)],
-        bulletType="1", bulletFontName="Helvetica-Bold", bulletColor=TEAL, bulletFontSize=10,
+        bulletType="1", bulletFormat="%s.", bulletFontName="Helvetica", bulletColor=INK, bulletFontSize=10,
         leftIndent=16, bulletDedent=16)
 
 
 def bullets(items):
-    return ListFlowable([ListItem(P(t), leftIndent=12) for t in items], bulletType="bullet", start="•",
-                        bulletColor=TEAL, leftIndent=12, bulletDedent=10)
+    return ListFlowable([ListItem(P(t), leftIndent=12) for t in items], bulletType="bullet", start="•", bulletFontSize=8,
+                        bulletColor=MUTED, leftIndent=12, bulletDedent=10)
 
 
 def table(rows, widths, header=True):
     t = Table(rows, colWidths=widths, repeatRows=1 if header else 0)
     style = [
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("TOPPADDING", (0, 0), (-1, -1), 5), ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
-        ("LEFTPADDING", (0, 0), (-1, -1), 6), ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("LINEBELOW", (0, 0), (-1, -1), 0.5, LINE),
+        ("TOPPADDING", (0, 0), (-1, -1), 4), ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 10),
     ]
     if header:
-        style += [("BACKGROUND", (0, 0), (-1, 0), TEAL)]
+        style += [("LINEBELOW", (0, 0), (-1, 0), 0.6, LINE), ("BOTTOMPADDING", (0, 0), (-1, 0), 5),
+                  ("TOPPADDING", (0, 1), (-1, 1), 7)]
     t.setStyle(TableStyle(style))
-    return t
-
-
-def note_box(flowables, bg=TEAL_SOFT):
-    t = Table([[flowables]], colWidths=[W - 2 * MARGIN])
-    t.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), bg), ("BOX", (0, 0), (-1, -1), 0, bg),
-        ("TOPPADDING", (0, 0), (-1, -1), 10), ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
-        ("LEFTPADDING", (0, 0), (-1, -1), 12), ("RIGHTPADDING", (0, 0), (-1, -1), 12),
-    ]))
     return t
 
 
@@ -117,27 +103,23 @@ CW = W - 2 * MARGIN  # ancho útil
 
 # ---------- Páginas ----------
 
-COVER_H = 62 * mm
+COVER_H = 78 * mm
 
 
 def first_page(canv, doc):
     canv.saveState()
-    canv.setFillColor(TEAL)
-    canv.rect(0, H - COVER_H, W, COVER_H, stroke=0, fill=1)
-    canv.setFillColor(SUN)
-    canv.rect(0, H - COVER_H - 2.2 * mm, W, 2.2 * mm, stroke=0, fill=1)
-    logo_h = 46 * mm
-    canv.drawImage(LOGO, W - MARGIN - logo_h, H - COVER_H + 8 * mm, width=logo_h, height=logo_h, mask="auto")
-    canv.setFillColor(SUN)
-    canv.setFont("Helvetica-Bold", 9)
-    canv.drawString(MARGIN, H - 20 * mm, "PROPUESTA · FASE 1")
-    canv.setFillColor(colors.white)
-    canv.setFont("Helvetica-Bold", 23)
-    canv.drawString(MARGIN, H - 31 * mm, "Sistema administrativo")
-    canv.drawString(MARGIN, H - 40 * mm, "para Llégate a Lechería")
+    logo = 26 * mm
+    canv.drawImage(LOGO, MARGIN - 2 * mm, H - MARGIN - logo, width=logo, height=logo, mask="auto")
+    canv.setFillColor(MUTED)
+    canv.setFont("Helvetica", 9.5)
+    canv.drawString(MARGIN, H - 54 * mm, "Propuesta · Fase 1")
+    canv.setFillColor(INK)
+    canv.setFont("Helvetica-Bold", 22)
+    canv.drawString(MARGIN, H - 63 * mm, "Sistema administrativo para Llégate a Lechería")
+    canv.setFillColor(MUTED)
     canv.setFont("Helvetica", 10)
-    canv.drawString(MARGIN, H - 49 * mm, "Para Naylu Vergara · Llégate a Lechería C.A.")
-    canv.drawString(MARGIN, H - 54.5 * mm, "Preparada por Alejandro Lamont · 2 de noviembre de 2026")
+    canv.drawString(MARGIN, H - 70 * mm, "Para Naylu Vergara, Llégate a Lechería C.A.  ·  Alejandro Lamont  ·  "
+                    "2 de noviembre de 2026")
     footer(canv, doc)
     canv.restoreState()
 
@@ -149,32 +131,24 @@ def later_pages(canv, doc):
 
 
 def footer(canv, doc):
-    canv.setStrokeColor(LINE)
-    canv.line(MARGIN, 14 * mm, W - MARGIN, 14 * mm)
-    canv.setFont("Helvetica", 8)
+    canv.setFont("Helvetica", 8.5)
     canv.setFillColor(MUTED)
-    canv.drawString(MARGIN, 10 * mm, "Llégate a Lechería · Propuesta de sistema administrativo · Fase 1")
-    canv.drawRightString(W - MARGIN, 10 * mm, f"Página {doc.page}")
+    canv.drawRightString(W - MARGIN, 11 * mm, str(doc.page))
 
 
 doc = BaseDocTemplate(SALIDA, pagesize=letter, leftMargin=MARGIN, rightMargin=MARGIN,
                       topMargin=MARGIN, bottomMargin=20 * mm,
                       title="Propuesta de sistema para Llégate a Lechería", author="Alejandro Lamont",
                       subject="Propuesta Fase 1 para Llégate a Lechería C.A.")
-frame_first = Frame(MARGIN, 20 * mm, CW, H - COVER_H - 12 * mm - 20 * mm, id="first")
-frame_rest = Frame(MARGIN, 20 * mm, CW, H - MARGIN - 20 * mm, id="rest")
+pad0 = dict(leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
+frame_first = Frame(MARGIN, 20 * mm, CW, H - COVER_H - 20 * mm, id="first", **pad0)
+frame_rest = Frame(MARGIN, 20 * mm, CW, H - MARGIN - 20 * mm, id="rest", **pad0)
 doc.addPageTemplates([
     PageTemplate(id="First", frames=[frame_first], onPage=first_page, autoNextPageTemplate="Rest"),
     PageTemplate(id="Rest", frames=[frame_rest], onPage=later_pages),
 ])
 
 story = []
-
-story.append(note_box([
-    P("<b>Cómo usar este PDF.</b> Puedes marcar las casillas, escribir en los campos grises y firmar al final. "
-      "Desde el celular o la computadora, ábrelo con Adobe Acrobat Reader (gratis) y usa "
-      "<b>Rellenar y firmar</b>. Al terminar, guárdalo y envíamelo por WhatsApp o correo.", "body"),
-]))
 
 # Resumen
 story += [P("Resumen", "h2"),
@@ -321,7 +295,7 @@ rows = [[P("Fase", "cellh"), P("Qué incluye", "cellh"), P("Tu prioridad", "cell
     for i, (f, q, p) in enumerate(fases, 1)]
 story += [P("Fases siguientes", "h2"),
           P("Las Fases 2 y 3 completan el resto de módulos que pediste. Cada una se cotiza y se aprueba por separado, "
-            "cuando la anterior esté funcionando. Marca en la última columna lo que quieras que te cotice desde ya."),
+            "cuando la anterior esté funcionando. Marca lo que quieras que te cotice desde ya."),
           table(rows, [CW * 0.09, CW * 0.6, CW * 0.17, CW * 0.14]), Spacer(1, 8),
           P("La agenda del anfitrión y las fichas de ingreso básicas ya llegan en la Fase 1. Al cerrarla revisaremos "
             "contigo los resultados y el orden de la Fase 2.")]
@@ -335,8 +309,7 @@ story += [P("Chatbot: servicio aparte", "h2"),
 
 # Lo que necesitamos
 story += [P("Lo que necesitamos de Llégate", "h2"),
-          P("Para cumplir la fecha del 27 de noviembre necesitamos lo siguiente antes del 6 de noviembre. Puedes "
-            "responder las cuatro primeras aquí mismo y marcar el resto cuando lo envíes.")]
+          P("Para cumplir la fecha del 27 de noviembre necesitamos lo siguiente antes del 6 de noviembre.")]
 preguntas = [
     ("moneda", "Moneda y tasa", "Si los precios en euros son solo de referencia y se cobran en bolívares, y qué "
      "tasa se usa (BCV u otra)."),
@@ -354,7 +327,7 @@ for key, titulo, texto in preguntas:
                      ("TOPPADDING", (0, 0), (0, 0), 2)]),
         Spacer(1, 3),
         Table([[Field(f"respuesta_{key}", f"Respuesta: {titulo}", CW - 18, 36, multiline=True)]],
-              colWidths=[CW], style=[("LEFTPADDING", (0, 0), (-1, -1), 18)]),
+              colWidths=[CW], style=[("LEFTPADDING", (0, 0), (-1, -1), 18), ("RIGHTPADDING", (0, 0), (-1, -1), 0)]),
         Spacer(1, 8),
     ]))
 entregas = [
@@ -399,7 +372,7 @@ story += [P("Términos y condiciones", "h2"),
 # Comentarios y aceptación
 half = (CW - 14) / 2
 sig_box = Table([[""]], colWidths=[half], rowHeights=[22 * mm],
-                style=[("BOX", (0, 0), (-1, -1), 0.8, LINE), ("BACKGROUND", (0, 0), (-1, -1), FIELD_BG)])
+                style=[("BOX", (0, 0), (-1, -1), 0.8, LINE)])
 left = [P("<b>Por Llégate a Lechería C.A.</b>"), Spacer(1, 4),
         *labeled_field("Nombre", "cliente_nombre", half, value="Naylu Vergara"),
         *labeled_field("Cédula o RIF", "cliente_documento", half),
@@ -411,7 +384,7 @@ right = [P("<b>Por el desarrollador</b>"), Spacer(1, 4),
          *labeled_field("Fecha", "dev_fecha", half),
          P("Firma", "label"), Spacer(1, 3),
          Table([[""]], colWidths=[half], rowHeights=[22 * mm],
-               style=[("BOX", (0, 0), (-1, -1), 0.8, LINE), ("BACKGROUND", (0, 0), (-1, -1), FIELD_BG)])]
+               style=[("BOX", (0, 0), (-1, -1), 0.8, LINE)])]
 firmas = Table([[left, right]], colWidths=[half + 7, half + 7],
                style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
                       ("RIGHTPADDING", (0, 0), (0, 0), 14)])
@@ -428,9 +401,6 @@ story += [KeepTogether([
           style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
                  ("TOPPADDING", (0, 0), (0, 0), 2)]),
     Spacer(1, 10), firmas,
-    Spacer(1, 6),
-    P("Para firmar: en Acrobat Reader toca <b>Rellenar y firmar</b> y luego <b>Firmar</b>, dibuja tu firma y "
-      "colócala en el recuadro.", "muted"),
 ])]
 
 doc.build(story)
