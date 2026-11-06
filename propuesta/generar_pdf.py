@@ -128,8 +128,8 @@ story += [P("Qué no incluye la Fase 1", "h2"),
           ])]
 
 # Plazos
-story += [P("Plazos", "h2"),
-          KeepTogether([
+story += [KeepTogether([
+              P("Plazos", "h2"),
               P("La Fase 1 se entrega el viernes 4 de diciembre de 2026, siempre que la propuesta se apruebe y el "
                 "primer pago se haga antes del viernes 13 de noviembre."),
               numbered([
