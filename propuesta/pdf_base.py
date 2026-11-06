@@ -25,6 +25,8 @@ S = {
     "muted": ParagraphStyle("muted", **{**base, "textColor": MUTED, "fontSize": 9, "leading": 13}),
     "h2": ParagraphStyle("h2", **{**base, "fontName": "Helvetica-Bold", "fontSize": 13, "leading": 17,
                                   "spaceBefore": 18, "spaceAfter": 6, "keepWithNext": 1}),
+    "h3": ParagraphStyle("h3", **{**base, "fontName": "Helvetica-Bold", "spaceBefore": 4, "spaceAfter": 4,
+                                  "keepWithNext": 1}),
     "cell": ParagraphStyle("cell", **{**base, "fontSize": 9, "leading": 12.5}),
     "cellh": ParagraphStyle("cellh", **{**base, "fontSize": 8.5, "leading": 12, "fontName": "Helvetica-Bold",
                                         "textColor": MUTED}),

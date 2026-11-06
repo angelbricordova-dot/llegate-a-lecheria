@@ -14,22 +14,23 @@ from pdf_base import (
 LOGO, SALIDA = sys.argv[1], sys.argv[2]
 
 doc = make_doc(SALIDA, LOGO, "Sistema administrativo para Llégate a Lechería",
-               "Para Naylu Vergara, Llégate a Lechería C.A.  ·  Alejandro Lamont  ·  2 de noviembre de 2026",
+               "Para Naylu Vergara, Llégate a Lechería C.A.  ·  Alejandro Lamont  ·  6 de noviembre de 2026",
                author="Alejandro Lamont", subject="Propuesta Fase 1 para Llégate a Lechería C.A.")
 
 story = []
 
 # Resumen
 story += [P("Resumen", "h2"),
-          P("Te propongo construir el sistema administrativo de Llégate a Lechería por fases, empezando por lo que "
-            "marcaste como prioridad para el primer mes: control de cobros con recordatorios, cotizaciones formales "
-            "y el cálculo de lo que corresponde a cada propietario o anfitrión."),
+          P("Te propongo construir el sistema administrativo de Llégate a Lechería por fases. La Fase 1 reúne en un "
+            "solo lugar tus reservas, cobros, comisiones y gastos, y los convierte en estadísticas para que puedas "
+            "analizar tus números y tomar decisiones."),
+          P("Esta versión incorpora lo que pediste al leer la primera: gastos y estadísticas desde la Fase 1. Para "
+            "mantener el precio, la agenda del anfitrión y las fichas de ingreso pasan a la Fase 2."),
           bullets([
-              "<b>Fase 1:</b> 260 USD en 3 cuotas, entrega el viernes 27 de noviembre de 2026. Incluye una agenda y "
-              "fichas de ingreso listas para el anfitrión que llega en diciembre.",
+              "<b>Fase 1:</b> 260 USD en 3 cuotas, entrega el viernes 4 de diciembre de 2026.",
               "<b>Plan mensual:</b> entre 35 y 50 USD desde la entrega, para mantener el sistema funcionando.",
-              "<b>Fases 2 y 3:</b> se cotizan por separado cuando la Fase 1 esté funcionando y hayas evaluado los "
-              "resultados.",
+              "<b>Fases 2 y 3:</b> precio estimado de 200 a 260 USD y de 320 a 400 USD. Se cotizan en firme cuando "
+              "la fase anterior esté funcionando.",
               "<b>Chatbot:</b> no forma parte de esta propuesta. Lo cotiza por separado Luis Enrique.",
           ])]
 
@@ -53,13 +54,15 @@ story += [P("Lo que entendimos", "h2"),
             "delegar el trabajo dependa de revisar todo a mano."),
           table(rows, [CW * 0.24, CW * 0.42, CW * 0.34]), Spacer(1, 8),
           P("Pediste expresamente que el Excel siga existiendo como respaldo, que el sistema permita corregir casos "
-            "especiales sin depender del programador y que todo quede integrado en un solo lugar.")]
+            "especiales sin depender del programador y que todo quede integrado en un solo lugar."),
+          P("También pediste que el sistema no se quede en registrar: que procese esos datos y te muestre qué "
+            "propiedades rinden más, cuáles no rotan y cómo vas frente a meses y años anteriores.")]
 
 # Fase 1
 story += [P("Fase 1: alcance", "h2"),
           P("La Fase 1 entrega un sistema web, usable desde el celular y la computadora, que reemplaza al bot de "
-            "Telegram \"Producción\" y al Excel mensual de reservas."),
-          numbered([
+            "Telegram \"Producción\" y a los Excel de reservas, ingresos y gastos."),
+          KeepTogether([P("Registro y cobros", "h3"), numbered([
               "<b>Registro de reservas.</b> Cliente, propiedad, fechas, noches, número de personas, canal de origen, "
               "estado de procedencia, red social, motivo del viaje, rango de edad y si es cliente recurrente.",
               "<b>Control de cobros.</b> Abono del 50% al reservar y saldo al llegar, con el método de pago de cada "
@@ -69,29 +72,41 @@ story += [P("Fase 1: alcance", "h2"),
               "reserva, descuentos negociados, cambios de fecha y estadías sin cobro.",
               "<b>Comisiones por temporada.</b> Porcentaje de temporada baja y alta que tú configuras, con las "
               "fechas de cada temporada.",
+              "<b>Comisiones por referido.</b> Qué propiedad trajo cada referido y el total de comisión que le "
+              "corresponde.",
               "<b>Liquidaciones.</b> El sistema calcula, por reserva y por mes, cuánto corresponde a cada "
               "propietario o anfitrión y cuánto a Llégate.",
-              "<b>Resumen del mes.</b> Una pantalla para ti con ingresos, comisiones ganadas, saldos por cobrar y "
-              "liquidaciones pendientes.",
+              "<b>Gastos de la empresa.</b> Registro por categoría y por mes, para ver ingresos y salidas juntos.",
               "<b>Recordatorios de cobro.</b> Notificación en el celular de los saldos pendientes y de las llegadas "
               "y salidas del día siguiente.",
               "<b>Cotizaciones en PDF.</b> La asesora rellena los datos y el sistema genera la cotización con la "
               "marca de Llégate, lista para enviar.",
-              "<b>Agenda del anfitrión.</b> Las llegadas y salidas de la semana, con propiedad, hora prevista y "
-              "contacto del huésped, para coordinar la entrega de llaves.",
-              "<b>Fichas de ingreso para vigilancia.</b> Se generan en PDF desde la reserva con los datos que envía "
-              "el huésped: nombres, cédulas, teléfono y vehículo.",
-              "<b>Accesos por persona.</b> Cuentas para ti, la asesora y el anfitrión. La asesora no ve las finanzas "
-              "de la empresa ni los gastos. El anfitrión ve solo su agenda y las fichas.",
+          ])]),
+          Spacer(1, 6),
+          KeepTogether([P("Estadísticas", "h3"), numbered([
+              "<b>Resumen del mes.</b> Ingresos, comisiones, gastos, ganancia neta, saldos por cobrar y liquidaciones "
+              "pendientes, con el avance frente a tu meta de ventas del mes.",
+              "<b>Detalle por propiedad.</b> Ingreso y ganancia de cada propiedad, ordenados de mayor a menor, y "
+              "noches vendidas calculadas con el check-in y el check-out.",
+              "<b>Rotación.</b> Las propiedades más alquiladas del mes y del año, y las que llevan más tiempo sin "
+              "alquilarse.",
+              "<b>Cobros y pagos.</b> Ingreso pendiente y lo pagado a cada propietario tal como lo registras, y "
+              "reparto de lo cobrado por método de pago.",
+              "<b>Histórico y comparaciones.</b> Una línea de tiempo mes a mes con el histórico de tus Excel, "
+              "comparada con el mes anterior y con el mismo mes del año pasado, con filtros por mes, propiedad y "
+              "método de pago.",
+          ], start=10)]),
+          Spacer(1, 6),
+          KeepTogether([P("Base del sistema", "h3"), numbered([
+              "<b>Accesos por persona.</b> Cuentas para ti y para la asesora. La asesora no ve los gastos, las "
+              "ganancias ni las estadísticas financieras.",
               "<b>Respaldo en tiempo real.</b> Cada cambio se copia al Google Sheets de Llégate, que sigue siendo la "
               "base madre de datos.",
-              "<b>Migración inicial.</b> Carga de las propiedades y de las reservas activas desde los Excel actuales.",
-              "<b>Capacitación.</b> Una sesión por videollamada para ti, la asesora y el anfitrión, y una guía corta "
-              "de uso.",
-          ]),
+              "<b>Migración.</b> Carga de las propiedades, las reservas activas y el histórico de tus Excel mensuales.",
+              "<b>Capacitación.</b> Una sesión por videollamada para ti y la asesora, y una guía corta de uso.",
+          ], start=15)]),
           Spacer(1, 6),
-          P("Todos los montos se registran en euros. Antes de empezar confirmaremos contigo cómo convertir los pagos "
-            "en bolívares y qué tasa usar."),
+          P("Los montos se registran en la moneda que confirmes, con su equivalente en bolívares a la tasa que uses."),
           Spacer(1, 4),
           KeepTogether(labeled_field("¿Quieres cambiar, quitar o añadir algo de la Fase 1? Escríbelo aquí:",
                                      "cambios_fase1", CW, 54, multiline=True))]
@@ -102,10 +117,10 @@ story += [P("Qué no incluye la Fase 1", "h2"),
           bullets([
               "Avisos por WhatsApp. En la Fase 1 los avisos llegan como notificación en el celular, porque la cuenta "
               "de Meta de Llégate tiene hoy restringido el uso de números de WhatsApp.",
-              "Finanzas de la empresa con registro de gastos, seguimiento posventa del anfitrión, reseñas y captación "
-              "de propiedades (Fase 2).",
-              "Portal del propietario, cartera única de propiedades, catálogo web con disponibilidad y lectura "
-              "automática de cédula y placa en las fichas (Fase 3).",
+              "Agenda del anfitrión, fichas de ingreso, seguimiento posventa, reseñas, captación de propiedades y "
+              "botón de la asesora en la web (Fase 2).",
+              "Portal del propietario, cartera única de propiedades, catálogo web con disponibilidad, lectura "
+              "automática de cédula y placa, y estadísticas de clientes potenciales de WhatsApp (Fase 3).",
               "El chatbot de WhatsApp e Instagram y la solución de la restricción de la cuenta de Meta.",
               "Cambios en la página web actual llegate.net.",
               "Fotografía, video o redacción de textos de las propiedades.",
@@ -114,60 +129,72 @@ story += [P("Qué no incluye la Fase 1", "h2"),
 
 # Plazos
 story += [P("Plazos", "h2"),
-          P("La Fase 1 se entrega el viernes 27 de noviembre de 2026, siempre que la propuesta se apruebe y el primer "
-            "pago se haga antes del viernes 6 de noviembre."),
-          numbered([
-              "<b>Del 2 al 6 de noviembre.</b> Aprobación, primer pago, respuestas a las preguntas pendientes y "
-              "entrega de accesos y Excel actuales.",
-              "<b>Del 9 al 14 de noviembre.</b> Estructura de datos, registro de reservas y control de cobros.",
-              "<b>Del 16 al 21 de noviembre.</b> Comisiones, liquidaciones, resumen del mes, cotizaciones en PDF, "
-              "notificaciones y respaldo en Google Sheets.",
-              "<b>Del 23 al 27 de noviembre.</b> Agenda del anfitrión, fichas de ingreso, migración de datos, pruebas "
-              "con reservas reales junto contigo y la asesora, capacitación y entrega.",
+          KeepTogether([
+              P("La Fase 1 se entrega el viernes 4 de diciembre de 2026, siempre que la propuesta se apruebe y el "
+                "primer pago se haga antes del viernes 13 de noviembre."),
+              numbered([
+              "<b>Del 9 al 13 de noviembre.</b> Aprobación, primer pago, respuestas a las preguntas pendientes y "
+              "entrega de accesos y de los Excel actuales e históricos.",
+              "<b>Del 16 al 21 de noviembre.</b> Estructura de datos, registro de reservas, control de cobros y "
+              "gastos.",
+              "<b>Del 23 al 28 de noviembre.</b> Comisiones, referidos, liquidaciones, cotizaciones en PDF, "
+              "notificaciones, respaldo en Google Sheets y migración del histórico.",
+              "<b>Del 30 de noviembre al 4 de diciembre.</b> Estadísticas, pruebas con datos reales junto contigo y "
+              "la asesora, capacitación y entrega.",
           ]),
-          Spacer(1, 6),
-          P("Durante la última semana el bot de Telegram sigue activo. Se apaga cuando confirmes que el sistema "
-            "registra bien las reservas reales.")]
+              Spacer(1, 6),
+              P("Durante las pruebas el bot de Telegram sigue activo. Se apaga cuando confirmes que el sistema "
+                "registra bien las reservas reales.")])]
 
 # Inversión
 rows = [[P("Cuota", "cellh"), P("Monto", "cellh"), P("Cuándo se paga", "cellh")]] + [
     [P(a, "cell"), P(f"<b>{b}</b>", "cell"), P(c, "cell")] for a, b, c in [
-        ("1", "100 USD", "Al aprobar la propuesta, antes del 6 de noviembre"),
-        ("2", "80 USD", "Al mostrar el registro de reservas y cobros funcionando, el 14 de noviembre"),
-        ("3", "80 USD", "En la entrega, el 27 de noviembre"),
+        ("1", "100 USD", "Al aprobar la propuesta, antes del 13 de noviembre"),
+        ("2", "80 USD", "Al mostrar el registro de reservas, cobros y gastos funcionando, el 21 de noviembre"),
+        ("3", "80 USD", "En la entrega, el 4 de diciembre"),
     ]] + [[P("<b>Total</b>", "cell"), P("<b>260 USD</b>", "cell"), P("", "cell")]]
 story += [KeepTogether([
     P("Inversión", "h2"),
     P("La Fase 1 cuesta 260 USD, pagados en 3 cuotas ligadas a avances visibles."),
     table(rows, [CW * 0.14, CW * 0.2, CW * 0.66]), Spacer(1, 8),
-    P("Desde diciembre de 2026 empieza el plan mensual, de entre 35 y 50 USD. Cubre el alojamiento del sistema, la "
-      "base de datos, las notificaciones, las copias de seguridad, la corrección de fallos y el soporte por "
-      "WhatsApp. El monto exacto se fija por escrito antes de la entrega, dentro de ese rango, según los servicios "
-      "que el sistema use."),
+    P("Desde la entrega empieza el plan mensual, de entre 35 y 50 USD. Cubre el alojamiento del sistema, la base "
+      "de datos, las notificaciones, las copias de seguridad, la corrección de fallos y el soporte por WhatsApp. El "
+      "monto exacto se fija por escrito antes de la entrega, dentro de ese rango, según los servicios que el sistema "
+      "use."),
 ])]
 
 # Fases siguientes
 fases = [
-    ("2", "Finanzas de la empresa con ingresos y gastos", "Imprescindible"),
-    ("2", "Seguimiento posventa del anfitrión: contacto durante la estadía, encuestas y material POP",
-     "Imprescindible"),
-    ("2", "Reseñas: solicitud al día siguiente de la salida, tu aprobación y muro en la web", "Imprescindible"),
-    ("2", "Captación de propiedades: checklist de visita, propuesta enviada y texto de venta", "Imprescindible"),
-    ("2", "Botón \"habla con la asesora\" y formulario de atención en la web", "Imprescindible"),
-    ("3", "Portal del propietario: fechas, ingresos, reporte mensual y actualización de precios", "Me interesa"),
-    ("3", "Cartera única de propiedades, en lugar de Notion y el Inventario maestro", "Me interesa"),
-    ("3", "Catálogo web con disponibilidad leída de los calendarios de Airbnb", "Me interesa"),
-    ("3", "Lectura automática de cédula y placa para las fichas de ingreso", "Me interesa"),
+    ("2", "Agenda del anfitrión: llegadas y salidas de la semana para coordinar la entrega de llaves"),
+    ("2", "Fichas de ingreso para vigilancia, generadas en PDF desde la reserva"),
+    ("2", "Seguimiento posventa del anfitrión: contacto durante la estadía, encuestas y material POP"),
+    ("2", "Reseñas: solicitud al día siguiente de la salida, tu aprobación y muro en la web"),
+    ("2", "Captación de propiedades: checklist de visita, propuesta enviada y texto de venta"),
+    ("2", "Botón \"habla con la asesora\" y formulario de atención en la web"),
+    ("3", "Portal del propietario: fechas, ingresos, reporte mensual y actualización de precios"),
+    ("3", "Cartera única de propiedades, en lugar de Notion y el Inventario maestro"),
+    ("3", "Catálogo web con disponibilidad leída de los calendarios de Airbnb"),
+    ("3", "Lectura automática de cédula y placa para las fichas de ingreso"),
+    ("3", "Estadísticas de clientes potenciales de WhatsApp e Instagram, cuando el número de WhatsApp esté resuelto"),
 ]
-rows = [[P("Fase", "cellh"), P("Qué incluye", "cellh"), P("Tu prioridad", "cellh"), P("Cotizar ya", "cellh")]] + [
-    [P(f, "cell"), P(q, "cell"), P(p, "cell"), Check(f"cotizar_{i}", f"Quiero que me lo coticen: {q}")]
-    for i, (f, q, p) in enumerate(fases, 1)]
+rows = [[P("Fase", "cellh"), P("Qué incluye", "cellh"), P("Cotizar ya", "cellh")]] + [
+    [P(f, "cell"), P(q, "cell"), Check(f"cotizar_{i}", f"Quiero que me lo coticen: {q}")]
+    for i, (f, q) in enumerate(fases, 1)]
+precios = [[P("Fase", "cellh"), P("Precio estimado", "cellh"), P("Cuándo", "cellh")]] + [
+    [P(a, "cell"), P(f"<b>{b}</b>", "cell"), P(c, "cell")] for a, b, c in [
+        ("2", "200 a 260 USD", "Al cerrar la Fase 1, a inicios de 2027"),
+        ("3", "320 a 400 USD", "Al cerrar la Fase 2"),
+    ]]
 story += [P("Fases siguientes", "h2"),
-          P("Las Fases 2 y 3 completan el resto de módulos que pediste. Cada una se cotiza y se aprueba por separado, "
-            "cuando la anterior esté funcionando. Marca lo que quieras que te cotice desde ya."),
-          table(rows, [CW * 0.09, CW * 0.6, CW * 0.17, CW * 0.14]), Spacer(1, 8),
-          P("La agenda del anfitrión y las fichas de ingreso básicas ya llegan en la Fase 1. Al cerrarla revisaremos "
-            "contigo los resultados y el orden de la Fase 2.")]
+          P("Las Fases 2 y 3 completan el resto de módulos que pediste. Cada una se cotiza en firme y se aprueba por "
+            "separado, cuando la anterior esté funcionando. Marca lo que quieras que te cotice desde ya."),
+          table(rows, [CW * 0.09, CW * 0.77, CW * 0.14]), Spacer(1, 10),
+          KeepTogether([
+              P("Para que puedas planificar, este es el precio estimado de cada fase:"),
+              table(precios, [CW * 0.09, CW * 0.25, CW * 0.66]), Spacer(1, 8),
+              P("El precio final depende de lo que cambie al terminar la fase anterior. Con la Fase 3 el plan mensual "
+                "puede subir si se activan servicios con costo, como la lectura con IA; se avisará antes."),
+          ])]
 
 # Chatbot
 story += [P("Chatbot: servicio aparte", "h2"),
@@ -178,15 +205,20 @@ story += [P("Chatbot: servicio aparte", "h2"),
 
 # Lo que necesitamos
 story += [P("Lo que necesitamos de Llégate", "h2"),
-          P("Para cumplir la fecha del 27 de noviembre necesitamos lo siguiente antes del 6 de noviembre.")]
+          P("Para cumplir la fecha del 4 de diciembre necesitamos lo siguiente antes del 13 de noviembre.")]
 preguntas = [
-    ("moneda", "Moneda y tasa", "Si los precios en euros son solo de referencia y se cobran en bolívares, y qué "
-     "tasa se usa (BCV u otra)."),
+    ("moneda", "Moneda y tasa", "En qué moneda llevas las cuentas, dólares o euros, y qué tasa usas para los pagos "
+     "en bolívares."),
     ("comisiones", "Comisiones", "El porcentaje de temporada baja y el de temporada alta, y las fechas de cada "
      "temporada."),
-    ("flujo", "Flujo del dinero", "Quién recibe el 50% de la reserva, quién recibe el saldo y cuándo se paga al "
-     "propietario o anfitrión."),
-    ("precios", "Precios mientras no exista el portal", "Confirmar que, hasta la Fase 3, los actualiza la asesora."),
+    ("flujo", "Flujo del dinero", "Quién recibe el 50% de la reserva, quién recibe el saldo, cuándo se paga al "
+     "propietario o anfitrión y qué significa \"pagado al cliente\" en tus planillas."),
+    ("referidos", "Referidos", "Quiénes son los referidos, sobre qué cobran comisión y cuánto."),
+    ("ganancia", "Ganancia por propiedad", "Si la ganancia que quieres ver por propiedad es la comisión de Llégate o "
+     "lo que recibe el propietario."),
+    ("historico", "Histórico", "Cuántos meses o años de Excel hay y si todas las pestañas tienen las mismas "
+     "columnas."),
+    ("meta", "Meta de ventas", "Tu meta de ventas mensual, si quieres que el resumen del mes muestre el avance."),
 ]
 for key, titulo, texto in preguntas:
     story.append(KeepTogether([
@@ -196,11 +228,11 @@ for key, titulo, texto in preguntas:
         Spacer(1, 8),
     ]))
 entregas = [
-    ("archivos", "Archivos actuales", "Copia del Excel de reservas, del de ingresos, del de gastos y del Inventario "
-     "maestro, y un modelo de la ficha de ingreso que piden los condominios."),
+    ("archivos", "Archivos actuales", "Copia de los Excel de reservas de todos los meses, de ingresos, de gastos y del "
+     "Inventario maestro."),
     ("google", "Google Sheets de respaldo", "Una cuenta de Google de Llégate donde vivirá la base madre."),
-    ("usuarios", "Usuarios", "Tu nombre y correo, y los de la asesora y el anfitrión de diciembre."),
-    ("marca", "Marca", "Logo en buena calidad para las cotizaciones y las fichas en PDF."),
+    ("usuarios", "Usuarios", "Tu nombre y correo, y los de la asesora."),
+    ("marca", "Marca", "Logo en buena calidad para las cotizaciones en PDF."),
 ]
 for key, titulo, texto in entregas:
     story.append(check_row(f"enviado_{key}", f"Enviado: {titulo}", f"<b>{titulo}.</b> {texto}"))
@@ -227,7 +259,7 @@ story += [P("Términos y condiciones", "h2"),
               "<b>Servicios de terceros.</b> El sistema usa servicios externos como Google, el alojamiento web y las "
               "notificaciones. Si uno de ellos cambia sus precios o condiciones, se avisará antes de ajustar el plan "
               "mensual.",
-              "<b>Validez.</b> Esta propuesta es válida hasta el 6 de noviembre de 2026. Si se aprueba después, las "
+              "<b>Validez.</b> Esta propuesta es válida hasta el 13 de noviembre de 2026. Si se aprueba después, las "
               "fechas se recalculan.",
           ])]
 
