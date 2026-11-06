@@ -4,146 +4,18 @@ Uso: python3 propuesta/generar_pdf.py <logo.png> <salida.pdf>
 """
 import sys
 
-from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.units import mm
-from reportlab.platypus import (
-    BaseDocTemplate, Flowable, Frame, KeepTogether, ListFlowable, ListItem,
-    PageTemplate, Paragraph, Spacer, Table, TableStyle,
+from reportlab.platypus import KeepTogether, Spacer
+
+from pdf_base import (
+    CW, Check, P, answer_field, bullets, check_row, comments_and_acceptance, labeled_field, make_doc, numbered,
+    table,
 )
 
 LOGO, SALIDA = sys.argv[1], sys.argv[2]
 
-TEAL = colors.HexColor("#0b5f78")
-INK = colors.HexColor("#1d2a30")
-MUTED = colors.HexColor("#6b777c")
-LINE = colors.HexColor("#c9d0d3")
-
-W, H = letter
-MARGIN = 20 * mm
-
-base = dict(fontName="Helvetica", fontSize=10, leading=14.5, textColor=INK, alignment=TA_LEFT)
-S = {
-    "body": ParagraphStyle("body", **base, spaceAfter=6),
-    "muted": ParagraphStyle("muted", **{**base, "textColor": MUTED, "fontSize": 9, "leading": 13}),
-    "h2": ParagraphStyle("h2", **{**base, "fontName": "Helvetica-Bold", "fontSize": 13, "leading": 17,
-                                  "spaceBefore": 18, "spaceAfter": 6, "keepWithNext": 1}),
-    "cell": ParagraphStyle("cell", **{**base, "fontSize": 9, "leading": 12.5}),
-    "cellh": ParagraphStyle("cellh", **{**base, "fontSize": 8.5, "leading": 12, "fontName": "Helvetica-Bold",
-                                        "textColor": MUTED}),
-    "label": ParagraphStyle("label", **{**base, "fontSize": 8.5, "leading": 11, "textColor": MUTED}),
-}
-
-
-def P(text, style="body"):
-    return Paragraph(text, S[style])
-
-
-class Check(Flowable):
-    """Casilla de verificación rellenable."""
-    def __init__(self, name, tooltip, size=11):
-        super().__init__()
-        self.name, self.tooltip, self.size = name, tooltip, size
-        self.width = self.height = size
-
-    def draw(self):
-        self.canv.acroForm.checkbox(
-            name=self.name, tooltip=self.tooltip, x=0, y=0, size=self.size, buttonStyle="check",
-            borderColor=MUTED, fillColor=colors.white, textColor=INK, borderWidth=0.8, relative=True)
-
-
-class Field(Flowable):
-    """Campo de texto rellenable, de una o varias líneas."""
-    def __init__(self, name, tooltip, width, height=18, value="", multiline=False):
-        super().__init__()
-        self.name, self.tooltip, self.value, self.multiline = name, tooltip, value, multiline
-        self.width, self.height = width, height
-
-    def draw(self):
-        self.canv.acroForm.textfield(
-            name=self.name, tooltip=self.tooltip, value=self.value, x=0, y=0,
-            width=self.width, height=self.height, fontName="Helvetica", fontSize=9.5,
-            borderColor=LINE, fillColor=colors.white, textColor=INK, borderWidth=0.8,
-            fieldFlags="multiline" if self.multiline else "", relative=True)
-
-
-def labeled_field(label, name, width, height=18, multiline=False, value=""):
-    return [P(label, "label"), Spacer(1, 3), Field(name, label, width, height, value, multiline), Spacer(1, 8)]
-
-
-def numbered(items, start=1):
-    return ListFlowable(
-        [ListItem(P(t), leftIndent=16, value=i) for i, t in enumerate(items, start)],
-        bulletType="1", bulletFormat="%s.", bulletFontName="Helvetica", bulletColor=INK, bulletFontSize=10,
-        leftIndent=16, bulletDedent=16)
-
-
-def bullets(items):
-    return ListFlowable([ListItem(P(t), leftIndent=12) for t in items], bulletType="bullet", start="•", bulletFontSize=8,
-                        bulletColor=MUTED, leftIndent=12, bulletDedent=10)
-
-
-def table(rows, widths, header=True):
-    t = Table(rows, colWidths=widths, repeatRows=1 if header else 0)
-    style = [
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("TOPPADDING", (0, 0), (-1, -1), 4), ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-    ]
-    if header:
-        style += [("LINEBELOW", (0, 0), (-1, 0), 0.6, LINE), ("BOTTOMPADDING", (0, 0), (-1, 0), 5),
-                  ("TOPPADDING", (0, 1), (-1, 1), 7)]
-    t.setStyle(TableStyle(style))
-    return t
-
-
-CW = W - 2 * MARGIN  # ancho útil
-
-# ---------- Páginas ----------
-
-COVER_H = 78 * mm
-
-
-def first_page(canv, doc):
-    canv.saveState()
-    logo = 26 * mm
-    canv.drawImage(LOGO, MARGIN - 2 * mm, H - MARGIN - logo, width=logo, height=logo, mask="auto")
-    canv.setFillColor(INK)
-    canv.setFont("Helvetica-Bold", 22)
-    canv.drawString(MARGIN, H - 63 * mm, "Sistema administrativo para Llégate a Lechería")
-    canv.setFillColor(MUTED)
-    canv.setFont("Helvetica", 10)
-    canv.drawString(MARGIN, H - 70 * mm, "Para Naylu Vergara, Llégate a Lechería C.A.  ·  Alejandro Lamont  ·  "
-                    "2 de noviembre de 2026")
-    footer(canv, doc)
-    canv.restoreState()
-
-
-def later_pages(canv, doc):
-    canv.saveState()
-    footer(canv, doc)
-    canv.restoreState()
-
-
-def footer(canv, doc):
-    canv.setFont("Helvetica", 8.5)
-    canv.setFillColor(MUTED)
-    canv.drawRightString(W - MARGIN, 11 * mm, str(doc.page))
-
-
-doc = BaseDocTemplate(SALIDA, pagesize=letter, leftMargin=MARGIN, rightMargin=MARGIN,
-                      topMargin=MARGIN, bottomMargin=20 * mm,
-                      title="Propuesta de sistema para Llégate a Lechería", author="Alejandro Lamont",
-                      subject="Propuesta Fase 1 para Llégate a Lechería C.A.")
-pad0 = dict(leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
-frame_first = Frame(MARGIN, 20 * mm, CW, H - COVER_H - 20 * mm, id="first", **pad0)
-frame_rest = Frame(MARGIN, 20 * mm, CW, H - MARGIN - 20 * mm, id="rest", **pad0)
-doc.addPageTemplates([
-    PageTemplate(id="First", frames=[frame_first], onPage=first_page, autoNextPageTemplate="Rest"),
-    PageTemplate(id="Rest", frames=[frame_rest], onPage=later_pages),
-])
+doc = make_doc(SALIDA, LOGO, "Sistema administrativo para Llégate a Lechería",
+               "Para Naylu Vergara, Llégate a Lechería C.A.  ·  Alejandro Lamont  ·  2 de noviembre de 2026",
+               author="Alejandro Lamont", subject="Propuesta Fase 1 para Llégate a Lechería C.A.")
 
 story = []
 
@@ -318,13 +190,9 @@ preguntas = [
 ]
 for key, titulo, texto in preguntas:
     story.append(KeepTogether([
-        Table([[Check(f"listo_{key}", f"Respondido: {titulo}"), P(f"<b>{titulo}.</b> {texto}")]],
-              colWidths=[18, CW - 18],
-              style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                     ("TOPPADDING", (0, 0), (0, 0), 2)]),
+        check_row(f"listo_{key}", f"Respondido: {titulo}", f"<b>{titulo}.</b> {texto}"),
         Spacer(1, 3),
-        Table([[Field(f"respuesta_{key}", f"Respuesta: {titulo}", CW - 18, 36, multiline=True)]],
-              colWidths=[CW], style=[("LEFTPADDING", (0, 0), (-1, -1), 18), ("RIGHTPADDING", (0, 0), (-1, -1), 0)]),
+        answer_field(f"respuesta_{key}", f"Respuesta: {titulo}"),
         Spacer(1, 8),
     ]))
 entregas = [
@@ -335,10 +203,7 @@ entregas = [
     ("marca", "Marca", "Logo en buena calidad para las cotizaciones y las fichas en PDF."),
 ]
 for key, titulo, texto in entregas:
-    story.append(Table([[Check(f"enviado_{key}", f"Enviado: {titulo}"), P(f"<b>{titulo}.</b> {texto}")]],
-                       colWidths=[18, CW - 18],
-                       style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                              ("TOPPADDING", (0, 0), (0, 0), 2)]))
+    story.append(check_row(f"enviado_{key}", f"Enviado: {titulo}", f"<b>{titulo}.</b> {texto}"))
 
 # Términos
 story += [P("Términos y condiciones", "h2"),
@@ -367,38 +232,9 @@ story += [P("Términos y condiciones", "h2"),
           ])]
 
 # Comentarios y aceptación
-half = (CW - 14) / 2
-sig_box = Table([[""]], colWidths=[half], rowHeights=[22 * mm],
-                style=[("BOX", (0, 0), (-1, -1), 0.8, LINE)])
-left = [P("<b>Por Llégate a Lechería C.A.</b>"), Spacer(1, 4),
-        *labeled_field("Nombre", "cliente_nombre", half, value="Naylu Vergara"),
-        *labeled_field("Cédula o RIF", "cliente_documento", half),
-        *labeled_field("Fecha", "cliente_fecha", half),
-        P("Firma", "label"), Spacer(1, 3), sig_box]
-right = [P("<b>Por el desarrollador</b>"), Spacer(1, 4),
-         *labeled_field("Nombre", "dev_nombre", half, value="Alejandro Lamont"),
-         *labeled_field("Cédula o RIF", "dev_documento", half),
-         *labeled_field("Fecha", "dev_fecha", half),
-         P("Firma", "label"), Spacer(1, 3),
-         Table([[""]], colWidths=[half], rowHeights=[22 * mm],
-               style=[("BOX", (0, 0), (-1, -1), 0.8, LINE)])]
-firmas = Table([[left, right]], colWidths=[half + 7, half + 7],
-               style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                      ("RIGHTPADDING", (0, 0), (0, 0), 14)])
-
-story += [KeepTogether([
-    P("Comentarios", "h2"),
-    *labeled_field("Cualquier duda, cambio o comentario sobre la propuesta:", "comentarios", CW, 70, multiline=True),
-]), KeepTogether([
-    P("Aceptación", "h2"),
-    P("La propuesta queda aprobada con la firma de ambas partes y el pago de la primera cuota."),
-    Table([[Check("acepto", "Acepto la propuesta y sus términos"),
-            P("<b>He leído y acepto esta propuesta y sus términos y condiciones.</b>")]],
-          colWidths=[18, CW - 18],
-          style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                 ("TOPPADDING", (0, 0), (0, 0), 2)]),
-    Spacer(1, 10), firmas,
-])]
+story += comments_and_acceptance(
+    "La propuesta queda aprobada con la firma de ambas partes y el pago de la primera cuota.",
+    "Por el desarrollador", "Alejandro Lamont")
 
 doc.build(story)
 print("PDF generado:", SALIDA)
