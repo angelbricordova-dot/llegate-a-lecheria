@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-11-10T19:16:08.273Z",
+        "reason": "user asked to follow llegate.net typography, whose body face is Montserrat"
+      }
+    ]
+  }
+}
