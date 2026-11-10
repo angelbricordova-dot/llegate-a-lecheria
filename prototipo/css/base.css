@@ -1,0 +1,109 @@
+/* Tokens compartidos: arena de su informe, turquesa del logo, amarillo sol como acento puntual. */
+/* Tokens: paleta de llegate.net; fondos claros y tarjetas redondeadas como en Tu Día en Tucacas. */
+:root {
+  --sand: #f3f6f5;
+  --sand-deep: #e5edeb;
+  --paper: #ffffff;
+  --ink: #1a2b3c;
+  --ink-soft: #3b4f62;
+  --muted: #5a6b7c;
+  --line: #d9e3e1;
+  --line-soft: #e9efee;
+  --teal: #00607f;
+  --teal-deep: #004a62;
+  --teal-wash: #e6f4f2;
+  --mint: #65bbb0;
+  --sun: #ffc66e;
+  --sun-wash: #fff1da;
+  --sun-ink: #6b4a06;
+  --sea: #1d7f68;
+  --sea-wash: #e2f2ec;
+  --coral: #b9473c;
+  --coral-wash: #f8e1dc;
+
+  --font: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --head: "Bricolage Grotesque", "Onest", system-ui, sans-serif;
+  --display: "Albra Book", Georgia, "Times New Roman", serif;
+  --fun: "Spongeboy", "Bricolage Grotesque", system-ui, sans-serif;
+
+  --r-sm: 10px;
+  --r: 14px;
+  --r-lg: 20px;
+  --shadow: 0 1px 2px rgba(26, 43, 60, .05), 0 6px 18px rgba(26, 43, 60, .06);
+  --shadow-lift: 0 2px 4px rgba(26, 43, 60, .07), 0 16px 34px rgba(26, 43, 60, .12);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--sand); line-height: 1.5; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+
+::selection { background: var(--sun-wash); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
+a { color: var(--teal); text-underline-offset: 3px; }
+input, textarea { caret-color: var(--teal); }
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; border: 3px solid var(--sand); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Botones */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 42px; padding: 0 18px; border-radius: 12px; border: 1px solid transparent;
+  font-weight: 600; font-size: 14px; white-space: nowrap; text-decoration: none;
+  transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn svg { width: 18px; height: 18px; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--teal); color: #fff; }
+.btn-primary:hover { background: var(--teal-deep); }
+.btn-sun { background: var(--sun); color: var(--ink); }
+.btn-sun:hover { background: #ffb84a; }
+.btn-ghost { background: var(--paper); border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink-soft); }
+.btn-whatsapp { background: #18794a; color: #fff; }
+.btn-whatsapp:hover { background: #12623b; }
+.btn-sm { height: 32px; padding: 0 12px; font-size: 13px; border-radius: 8px; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* Campos */
+.field { display: grid; gap: 6px; }
+.field label { font-size: 12.5px; font-weight: 600; color: var(--ink-soft); }
+.input {
+  width: 100%; height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: #fff; font-size: 14px; transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+textarea.input { height: auto; padding: 10px 12px; resize: vertical; }
+.input:hover { border-color: #cfc2a6; }
+.input:focus { outline: 2px solid var(--teal); outline-offset: 1px; border-color: var(--teal); }
+.input::placeholder { color: #8a9a9e; }
+
+/* Etiquetas de estado */
+.tag { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 9px; border-radius: 99px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.tag svg { width: 13px; height: 13px; }
+.tag-teal { background: var(--teal-wash); color: var(--teal-deep); }
+.tag-sun { background: var(--sun-wash); color: var(--sun-ink); }
+.tag-sea { background: var(--sea-wash); color: #1f6b59; }
+.tag-coral { background: var(--coral-wash); color: #8f3128; }
+.tag-plain { background: var(--line-soft); color: var(--ink-soft); }
+
+/* Aviso flotante */
+.toast {
+  position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 60;
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px;
+  background: var(--ink); color: #fff; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lift);
+  transition: transform .4s var(--ease), opacity .4s var(--ease);
+}
+.toast.show { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.toast a { color: var(--sun); font-weight: 600; }
+.toast svg { width: 18px; height: 18px; color: var(--sun); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

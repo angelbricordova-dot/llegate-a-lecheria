@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Llégate a Lechería · Apartamentos</title>
+  <meta name="description" content="Apartamentos vacacionales en Lechería, cerca de la playa. Elige tus fechas y te ayudamos a reservar.">
+  <meta name="theme-color" content="#00607f">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="landing">
+  <header class="wrap top">
+    <a class="logo" href="landing.html"><img src="assets/logo.png" alt=""><div><b>Llégate a Lechería</b><span>Apartamentos cerca de la playa</span></div></a>
+    <div class="top-actions">
+      <a class="round" href="https://instagram.com/llegatealecheria" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+      <a class="round wa" href="https://wa.me/584248966650" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <img class="hero-img" id="hero-img" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=2000&amp;h=1300&amp;fit=crop&amp;q=70&amp;auto=format" alt="Piscina frente al mar">
+        <div class="hero-inner">
+          <h1>Vive <span class="fun">Lechería</span> como nunca antes</h1>
+          <p>Apartamentos con piscina a minutos de Playa Lido, El Morro y Playa Mansa. Elige tus fechas, mira lo que está libre y reserva por WhatsApp.</p>
+          <div class="hero-cta">
+            <a class="btn btn-sun btn-lg" href="#buscar"><i data-lucide="calendar-days"></i>Buscar fechas</a>
+            <button class="btn btn-glass btn-lg" type="button" data-open-bot><i data-lucide="sparkles"></i>Te ayudo a elegir</button>
+          </div>
+        </div>
+      </section>
+
+      <form class="finder" id="buscar">
+        <h2>¿Cuándo vienes?</h2>
+        <div class="finder-grid">
+          <div class="box"><label for="f-in">Llegada</label><input type="date" id="f-in" required></div>
+          <div class="box"><label for="f-out">Salida</label><input type="date" id="f-out" required></div>
+          <div class="box people"><label id="f-pers-l">Personas</label>
+            <div class="stepper"><button type="button" id="menos" aria-label="Una persona menos"><i data-lucide="minus"></i></button><output id="f-pers" aria-labelledby="f-pers-l">4</output><button type="button" id="mas" aria-label="Una persona más"><i data-lucide="plus"></i></button></div>
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit"><i data-lucide="search"></i>Ver lo libre</button>
+        </div>
+        <p class="finder-note" id="finder-note"></p>
+      </form>
+      <div class="amenities" aria-label="Lo que tienen nuestros apartamentos">
+        <ul id="amenities"></ul>
+      </div>
+    </div>
+
+    <section class="section wrap" id="catalogo">
+      <div class="section-head">
+        <div><h2>Apartamentos <span class="fun">libres</span> para ti</h2><p id="cat-sub">Fotos, capacidad y cercanía a la playa de cada uno.</p></div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="more"><button class="btn btn-ghost" type="button" id="ver-todos" hidden></button></div>
+      <p class="disclaimer">Precios por noche sujetos a cambios según temporada y número de personas. Te los confirmamos por WhatsApp antes de reservar.</p>
+    </section>
+
+    <section class="section wrap">
+      <div class="section-head"><div><h2>Reservar es <span class="fun">sencillo</span></h2></div></div>
+      <ol class="steps">
+        <li><b>Elige fechas y apartamento</b><p>Mira lo que está libre o deja que el asistente te muestre 2 o 3 opciones según tu presupuesto.</p></li>
+        <li><b>Confirma por WhatsApp</b><p>Tu solicitud llega escrita a nuestra asesora. Ella te confirma y te envía los datos de pago.</p></li>
+        <li><b>Abona el 50 % y llega</b><p>El resto lo pagas al llegar. Pago móvil, transferencia, Zelle, Binance o efectivo.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <img src="assets/logo.png" alt="Llégate a Lechería">
+    <b>Llégate a Lechería</b>
+    <div class="foot-links">
+      <a class="btn btn-whatsapp" href="https://wa.me/584248966650" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>WhatsApp</a>
+      <a class="btn btn-ghost" href="https://instagram.com/llegatealecheria" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <small>Calle Arismendi, C.C. Atlántico, piso 2 · Lechería, Anzoátegui</small>
+    <a class="admin" href="index.html"><i data-lucide="key-round"></i>Acceso administración</a>
+  </footer>
+
+  <button class="bot-launch" type="button" data-open-bot><img src="assets/logo.png" alt=""><span>¿Te ayudo a elegir?</span></button>
+  <section class="bot" id="bot" aria-label="Asistente de reservas" aria-hidden="true">
+    <div class="bot-head"><img src="assets/logo.png" alt=""><div><b>Asistente de Llégate</b><span>Responde al momento, también de noche</span></div>
+      <button class="icon-btn" type="button" id="bot-close" aria-label="Cerrar asistente"><i data-lucide="x"></i></button></div>
+    <div class="bot-log" id="bot-log" aria-live="polite"></div>
+    <div class="bot-foot"><a href="https://wa.me/584248966650" target="_blank" rel="noopener"><i data-lucide="user-round"></i>Hablar con una persona</a><small>Demostración</small></div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>
