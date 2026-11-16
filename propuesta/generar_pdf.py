@@ -127,6 +127,37 @@ story += [P("Qué no incluye la Fase 1", "h2"),
               "Pagos en línea dentro del sistema.",
           ])]
 
+# Cómo está hecho y de quién es
+tecnologia = [
+    ("Aplicación", "Aplicación web (Next.js), instalable en el celular", "Sin tienda de apps ni mensualidad por usuario."),
+    ("Base de datos", "PostgreSQL (Supabase)", "El formato estándar: se exporta completa y se lleva a cualquier proveedor."),
+    ("Alojamiento", "Vercel", "Donde vive la aplicación, la misma de este prototipo."),
+    ("Respaldo", "Tu Google Sheets", "Cada cambio se copia al momento. Sigue siendo tu base madre."),
+    ("Inteligencia artificial", "OpenAI o Anthropic", "Resúmenes y lectura de tus números. Se puede cambiar de proveedor sin rehacer nada."),
+    ("Chatbot", "Pieza de Luis Enrique", "Se conecta al sistema. Si un día cambias de chatbot, el sistema sigue igual."),
+]
+rows = [[P("Pieza", "cellh"), P("Herramienta", "cellh"), P("Qué significa para ti", "cellh")]] + [
+    [P(a, "cell"), P(f"<b>{b}</b>", "cell"), P(c, "cell")] for a, b, c in tecnologia]
+story += [KeepTogether([
+              P("Cómo está hecho y de quién es", "h2"),
+              P("No es una plataforma alquilada como GoHighLevel: es tu propio sistema, hecho con piezas estándar "
+                "que puedes llevarte a donde quieras. El chatbot y las funciones de inteligencia artificial se "
+                "conectan a él."),
+              table(rows, [CW * 0.2, CW * 0.32, CW * 0.48]),
+          ]), Spacer(1, 10),
+          KeepTogether([
+              P("Lo que queda a tu nombre", "h3"),
+              bullets([
+                  "<b>El código.</b> En un repositorio de GitHub a tu nombre. Lo puede retomar cualquier "
+                  "programador.",
+                  "<b>Las cuentas de los servicios</b> (Supabase, Vercel y Google) se crean a nombre de Llégate, y "
+                  "nosotros trabajamos con acceso.",
+                  "<b>Tus datos.</b> Se exportan completos cuando quieras, en Excel y como base de datos.",
+                  "<b>Si el servicio termina,</b> te quedas con todo: código, datos y cuentas. No hay que rehacer "
+                  "nada para cambiar de proveedor o de tecnología.",
+              ]),
+          ])]
+
 # Plazos
 story += [KeepTogether([
               P("Plazos", "h2"),
@@ -251,7 +282,10 @@ story += [P("Términos y condiciones", "h2"),
               "<b>Garantía.</b> Durante los 30 días siguientes a la entrega, los fallos de lo entregado se corrigen "
               "sin costo.",
               "<b>Plan mensual.</b> Se paga por adelantado cada mes. Si se deja de pagar, se avisa con 15 días antes "
-              "de suspender el sistema.",
+              "de dejar de cubrir el alojamiento y el soporte. El sistema, sus datos y sus cuentas siguen siendo "
+              "tuyos.",
+              "<b>Propiedad.</b> El código, la base de datos y las cuentas de los servicios quedan a nombre de Naylu "
+              "Vergara al completar el pago de la Fase 1.",
               "<b>Datos de Llégate.</b> Los datos de reservas, clientes, propietarios y finanzas pertenecen siempre a "
               "Llégate. Están respaldados en su Google Sheets y los conserva aunque el servicio termine.",
               "<b>Confidencialidad.</b> Los datos de huéspedes, propietarios y finanzas se usan solo para prestar el "
